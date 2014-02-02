@@ -8,9 +8,138 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".SteelDrawing" >
 
-    <TextView
-        android:layout_width="wrap_content"
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/inputLabel"
+                android:text="@string/inlet"/>
+            <requestFocus />
+
+            <EditText
+                style="@style/inputNumbers"
+                android:id="@+id/txtinlet"/>
+            
+            <TextView               
+                style="@style/measure"
+                android:text="mm"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/inputLabel"
+                android:text="@string/outlet"/>
+
+            <EditText
+                style="@style/inputNumbers"
+                android:id="@+id/txtoutlet"/>
+            
+            <TextView               
+                style="@style/measure"
+                android:text="mm"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+             <TextView
+                style="@style/inputLabel"
+                android:text="@string/n_of_blocks"/>
+
+            <EditText
+                style="@style/inputNumbers"
+                android:id="@+id/txtnofblocks"
+                android:hint="Max 10 block"
+                />
+            
+            <TextView               
+                style="@style/measure"
+                android:text="N°"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25"
+                android:text="@string/type_of_wire" />
+
+            <Spinner
+                style="@style/inputNumbers"
+                android:id="@+id/typeofwire"
+                />
+            
+             <TextView               
+                style="@style/measure"
+                android:text="#"/>
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+             <TextView
+                style="@style/inputLabel"
+                android:text="@string/target_speed"/>
+
+            <EditText
+                style="@style/inputNumbers"
+                android:id="@+id/txttargetspeed"/>
+            
+            <TextView               
+                style="@style/measure"
+                android:text="m/s"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" 
+            android:layout_marginTop="2mm">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.65"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/btnSubmit"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="5"
+                    android:text="@string/confirm" />
+            </LinearLayout>
+            
+             <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.10" />
+        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>

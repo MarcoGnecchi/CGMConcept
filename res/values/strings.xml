@@ -4,5 +4,27 @@
     <string name="app_name">CGMConcept</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-
+    <string name="inlet">INLET</string>
+    <string name="outlet">OUTLET</string>
+    <string name="n_of_blocks">N. of BLOCKS</string>
+    <string name="type_of_wire">TYPE OF WIRE</string>
+    <string name="target_speed">TARGET SPEED</string>
+    <string name="confirm">Confirm</string>
+    <string name="average_reduction">AVERAGE REDUCTION</string>
+    <string name="total_reduction">TOTAL REDUCTION</string>
+    <string name="inlet_ts">INLET T/S</string>
+    <string name="outlet_ts">OUTLET T/S</string>
+    <string name="constant_power">Constant Power</string>
+    <string name="constant_reduction">Constant Reduction</string>
+    
+    <string-array name="wires_array">
+        <item>Platinum</item>
+        <item>Silver</item>
+        <item>Iron</item>
+        <item>Copper</item>
+        <item>Aluminium</item>
+        <item>Brass</item>
+        <item>Bronze</item>
+        <item>Steel</item>
+    </string-array>
 </resources>
