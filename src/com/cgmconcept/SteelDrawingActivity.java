@@ -6,7 +6,7 @@ import android.view.Menu;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-public class SteelDrawing extends Activity {
+public class SteelDrawingActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
