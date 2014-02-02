@@ -8,7 +8,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".SteelDrawingActivity" >
 
-    
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -21,16 +20,17 @@
 
             <TextView
                 style="@style/inputLabel"
-                android:text="@string/inlet"/>
+                android:text="@string/inlet" />
+
             <requestFocus />
 
             <EditText
-                style="@style/inputNumbers"
-                android:id="@+id/txtinlet"/>
-            
-            <TextView               
+                android:id="@+id/txtinlet"
+                style="@style/inputNumbers" />
+
+            <TextView
                 style="@style/measure"
-                android:text="mm"/>
+                android:text="mm" />
         </LinearLayout>
 
         <LinearLayout
@@ -40,15 +40,15 @@
 
             <TextView
                 style="@style/inputLabel"
-                android:text="@string/outlet"/>
+                android:text="@string/outlet" />
 
             <EditText
-                style="@style/inputNumbers"
-                android:id="@+id/txtoutlet"/>
-            
-            <TextView               
+                android:id="@+id/txtoutlet"
+                style="@style/inputNumbers" />
+
+            <TextView
                 style="@style/measure"
-                android:text="mm"/>
+                android:text="mm" />
         </LinearLayout>
 
         <LinearLayout
@@ -56,19 +56,18 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
 
-             <TextView
+            <TextView
                 style="@style/inputLabel"
-                android:text="@string/n_of_blocks"/>
+                android:text="@string/n_of_blocks" />
 
             <EditText
-                style="@style/inputNumbers"
                 android:id="@+id/txtnofblocks"
-                android:hint="Max 10 block"
-                />
-            
-            <TextView               
+                style="@style/inputNumbers"
+                android:hint="Max 10 block" />
+
+            <TextView
                 style="@style/measure"
-                android:text="N°"/>
+                android:text="N°" />
         </LinearLayout>
 
         <LinearLayout
@@ -83,38 +82,37 @@
                 android:text="@string/type_of_wire" />
 
             <Spinner
-                style="@style/inputNumbers"
                 android:id="@+id/typeofwire"
-                />
-            
-             <TextView               
+                style="@style/inputNumbers" />
+
+            <TextView
                 style="@style/measure"
-                android:text="#"/>
+                android:text="#" />
         </LinearLayout>
-        
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
 
-             <TextView
+            <TextView
                 style="@style/inputLabel"
-                android:text="@string/target_speed"/>
+                android:text="@string/target_speed" />
 
             <EditText
-                style="@style/inputNumbers"
-                android:id="@+id/txttargetspeed"/>
-            
-            <TextView               
+                android:id="@+id/txttargetspeed"
+                style="@style/inputNumbers" />
+
+            <TextView
                 style="@style/measure"
-                android:text="m/s"/>
+                android:text="m/s" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" 
-            android:layout_marginTop="2mm">
+            android:layout_marginTop="2mm"
+            android:orientation="horizontal" >
 
             <View
                 android:layout_width="0dp"
@@ -134,8 +132,8 @@
                     android:ems="5"
                     android:text="@string/confirm" />
             </LinearLayout>
-            
-             <View
+
+            <View
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.10" />

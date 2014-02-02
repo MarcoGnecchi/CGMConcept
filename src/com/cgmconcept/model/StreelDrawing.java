@@ -1,6 +1,9 @@
 package com.cgmconcept.model;
 
-public class StreelDrawing {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class StreelDrawing implements Parcelable{
 
 	private int mInlet;
 	private int mOutlet;
@@ -12,34 +15,35 @@ public class StreelDrawing {
 	private int inletTs;
 	private int outletTs;
 	
+	
 	public int getmInlet() {
 		return mInlet;
 	}
-	public void setmInlet(int mInlet) {
+	public void setInlet(int mInlet) {
 		this.mInlet = mInlet;
 	}
 	public int getmOutlet() {
 		return mOutlet;
 	}
-	public void setmOutlet(int mOutlet) {
+	public void setOutlet(int mOutlet) {
 		this.mOutlet = mOutlet;
 	}
 	public int getmNOfBlocks() {
 		return mNOfBlocks;
 	}
-	public void setmNOfBlocks(int mNOfBlocks) {
+	public void setNOfBlocks(int mNOfBlocks) {
 		this.mNOfBlocks = mNOfBlocks;
 	}
 	public int getmTypeOfWire() {
 		return mTypeOfWire;
 	}
-	public void setmTypeOfWire(int mTypeOfWire) {
+	public void setTypeOfWire(int mTypeOfWire) {
 		this.mTypeOfWire = mTypeOfWire;
 	}
 	public int getmTargetSpeed() {
 		return mTargetSpeed;
 	}
-	public void setmTargetSpeed(int mTargetSpeed) {
+	public void setTargetSpeed(int mTargetSpeed) {
 		this.mTargetSpeed = mTargetSpeed;
 	}
 	public int getmAverageReduction() {
@@ -66,6 +70,43 @@ public class StreelDrawing {
 	public void setOutletTs(int outletTs) {
 		this.outletTs = outletTs;
 	}
+
+	
+	
+	
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		
+		dest.writeInt(mInlet);
+		dest.writeInt(mOutlet);
+		dest.writeInt(mNOfBlocks);
+		dest.writeInt(mTypeOfWire);
+		dest.writeInt(mTargetSpeed);
+	}
+	
+	static final Parcelable.Creator<StreelDrawing> CREATOR = new Parcelable.Creator<StreelDrawing>() {
+
+		@Override
+		public StreelDrawing createFromParcel(Parcel in) {
+			StreelDrawing sd = new StreelDrawing();
+			sd.mInlet = in.readInt();
+			sd.mOutlet = in.readInt();
+			sd.mNOfBlocks = in.readInt();
+			sd.mTypeOfWire = in.readInt();
+			sd.mTargetSpeed = in.readInt();	
+			return sd;
+		}
+
+		@Override
+		public StreelDrawing[] newArray(int size) {
+			
+			return new StreelDrawing[size];
+		}
+	};
 	
 	
 

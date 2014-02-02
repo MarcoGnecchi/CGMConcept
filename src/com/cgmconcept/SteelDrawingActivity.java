@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.cgmconcept.model.StreelDrawing;
 import com.mobsandgeeks.saripaar.Rule;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.Validator.ValidationListener;
@@ -19,7 +20,7 @@ import com.mobsandgeeks.saripaar.annotation.NumberRule.NumberType;
 import com.mobsandgeeks.saripaar.annotation.Required;
 
 public class SteelDrawingActivity extends Activity implements
-		ValidationListener, OnClickListener {
+		ValidationListener, OnClickListener{
 
 	@Required(order = 1)
 	private EditText inletEditText;
@@ -33,6 +34,8 @@ public class SteelDrawingActivity extends Activity implements
 
 	@Required(order = 5)
 	private EditText targetSpeedEditText;
+	
+	private Spinner spinner;
 
 	private Button confirmButton; 
 	
@@ -50,7 +53,7 @@ public class SteelDrawingActivity extends Activity implements
 		confirmButton = (Button) findViewById(R.id.btnSubmit);
 
 		// Setting the spinner
-		Spinner spinner = (Spinner) findViewById(R.id.typeofwire);
+		spinner = (Spinner) findViewById(R.id.typeofwire);
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter
 				.createFromResource(this, R.array.wires_array,
 						android.R.layout.simple_spinner_item);
@@ -74,13 +77,19 @@ public class SteelDrawingActivity extends Activity implements
 	@Override
 	public void onValidationSucceeded() {
 
-		Toast.makeText(this, "Yay! we got it right!", Toast.LENGTH_SHORT).show();
+		StreelDrawing sd = new StreelDrawing();
+		sd.setInlet(Integer.valueOf(inletEditText.getText().toString()));
+		sd.setOutlet(Integer.valueOf(inletEditText.getText().toString()));
+		sd.setNOfBlocks(Integer.valueOf(inletEditText.getText().toString()));
+		sd.setTypeOfWire(spinner.getSelectedItemPosition());
+		sd.setTargetSpeed(Integer.valueOf(inletEditText.getText().toString()));
+		
 	}
 
 	@Override
 	public void onValidationFailed(View failedView, Rule<?> failedRule) {
 
-		String message = failedRule.getFailureMessage();
+		final String message = failedRule.getFailureMessage();
 
 		if (failedView instanceof EditText) {
 			failedView.requestFocus();
