@@ -18,15 +18,14 @@
     </style>
 
     <style name="inputNumbers">
-        <item name="android:layout_gravity">center_horizontal</item>
         <item name="android:inputType">number</item>
     </style>
     
     <style name="inputLabel">
-        <item name="android:layout_gravity">left</item>
     </style>
     
-      <style name="measure">
-        <item name="android:layout_gravity">center_horizontal</item>
+     <style name="measure">
+         <item name="android:padding">5px</item>
+         <item name="android:gravity">center</item>
     </style>
 </resources>
