@@ -17,6 +17,7 @@
     <string name="constant_power">Constant Power</string>
     <string name="constant_reduction">Constant Reduction</string>
     <string name="numberRange">Please enter a number between 1 and 10</string>
+    <string name="dieschedule">DIE SCHEDULE</string>
     
     <string-array name="wires_array">
         <item>Platinum</item>

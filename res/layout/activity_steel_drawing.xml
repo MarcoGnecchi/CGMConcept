@@ -10,13 +10,14 @@
         app:rowCount="7">
         
             <TextView
-                app:layout_columnSpan="3"
-                app:layout_gravity="fill_horizontal"
-                app:layout_row="0"
-                android:text="DIE SCHEDULE" 
-                android:textStyle="bold"
-                android:textSize="25dp"
+                app:layout_columnSpan = "3"
+                app:layout_gravity = "fill_horizontal"
+                app:layout_row = "0"
+                android:text = "@string/dieschedule" 
+                android:textStyle = "bold"
+                android:textSize = "25sp"
                 android:gravity = "center"
+                android:layout_margin = "5dp"
                 />
         
           <TextView
