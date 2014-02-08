@@ -18,10 +18,12 @@
     </style>
 
     <style name="inputNumbers">
-        <item name="android:inputType">number</item>
+       
     </style>
     
     <style name="inputLabel">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center_vertical</item>
     </style>
     
      <style name="measure">
