@@ -1,6 +1,6 @@
 package com.cgmconcept;
 
-import com.cgmconcept.model.StreelDrawing;
+import com.cgmconcept.model.SteelDrawing;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -16,7 +16,7 @@ public class ConfirmData extends Activity {
 	@InjectView(R.id.n_of_dies) TextView nOfDies;
 	@InjectView(R.id.carbon_content) TextView carbonContent;
 	@InjectView(R.id.targetspeed) TextView targetSpeed;
-	@InjectView(R.id.speedwireinlet) TextView sppedwireinlet;
+	@InjectView(R.id.speedwireinlet) TextView speedwireinlet;
 	@InjectView(R.id.averagereduction) TextView averagereduction;
 	@InjectView(R.id.totalreduction) TextView totalReduction;
 	@InjectView(R.id.inletts) TextView inletTS;
@@ -28,18 +28,16 @@ public class ConfirmData extends Activity {
 		setContentView(R.layout.confirm_data);
 		ButterKnife.inject(this);
 	    
-		Bundle extras = getIntent().getExtras();
-	    if (extras != null){
-	    	
+		SteelDrawing sd = null;
+		
+		Bundle b = getIntent().getExtras();
+	    if (b != null){
+	    	sd = b.getParcelable(SteelDrawing.class.getName());
 	    } else {
 	    	finish();
 	    }
 		
-		
+	    speedwireinlet.setText("");	
 	}
 	
-	private double getSpeedWireInlet(StreelDrawing sd){
-		double methodResult;
-		return new Double(0);
-	}
 }

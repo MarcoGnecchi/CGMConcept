@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.Toast;
 
-import com.cgmconcept.model.StreelDrawing;
+import com.cgmconcept.model.SteelDrawing;
 import com.mobsandgeeks.saripaar.Rule;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.Validator.ValidationListener;
@@ -82,12 +82,13 @@ public class SteelDrawingActivity extends Activity implements
 	@Override
 	public void onValidationSucceeded() {
 
-		StreelDrawing sd = new StreelDrawing();
+		SteelDrawing sd = new SteelDrawing();
 		sd.setInlet(Integer.valueOf(inletEditText.getText().toString()));
 		sd.setOutlet(Integer.valueOf(inletEditText.getText().toString()));
-		sd.setNOfBlocks(Integer.valueOf(inletEditText.getText().toString()));
+		sd.setNOfDies(Integer.valueOf(inletEditText.getText().toString()));
 		sd.setTargetSpeed(Integer.valueOf(inletEditText.getText().toString()));
 		Intent i = new Intent(this, ConfirmData.class);
+		i.putExtra(SteelDrawing.class.getName(), sd);
 		startActivity(i);
 				
 	}
