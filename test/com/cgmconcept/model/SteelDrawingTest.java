@@ -19,7 +19,9 @@ public class SteelDrawingTest {
 	public void testTotalReduction(){
 		SteelDrawing sd = new SteelDrawing();
 		sd.setInlet(6.50);
-		System.out.println("PUTA");
-		assertEquals("10 x 5 must be 50", 50, 10*5);
+		sd.setOutlet(2.00);
+		sd.setNOfDies(8);
+		sd.setmTargetSpeed(10.0);
+		assertEquals(25.5, sd.getAverageReduction(), 0);
 	}
 }

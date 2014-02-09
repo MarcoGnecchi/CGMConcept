@@ -33,7 +33,7 @@ public class SteelDrawing implements Parcelable {
 		this.mOutlet = mOutlet;
 	}
 
-	public int getmNOfDies() {
+	public int getNOfDies() {
 		return mNOfDies;
 	}
 
@@ -49,7 +49,7 @@ public class SteelDrawing implements Parcelable {
 		this.mTargetSpeed = mTargetSpeed;
 	}
 
-	public double getmAverageReduction() {
+	public double getAverageReduction() {
 		return mAverageReduction;
 	}
 
