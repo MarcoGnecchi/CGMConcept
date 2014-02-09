@@ -52,6 +52,7 @@ public class SteelDrawingActivity extends Activity implements
 		nOfDiesPicker = (NumberPicker) findViewById(R.id.n_of_dies);
 		nOfDiesPicker.setMaxValue(10);
 		nOfDiesPicker.setMinValue(1);
+		nOfDiesPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
 		
 		
 		carbonContentPicker = (NumberPicker) findViewById(R.id.carbon_content);
@@ -59,6 +60,7 @@ public class SteelDrawingActivity extends Activity implements
 		carbonContentPicker.setDisplayedValues(carbonValues);
 		carbonContentPicker.setMinValue(0);
 		carbonContentPicker.setMaxValue(carbonValues.length - 1);
+		carbonContentPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
 		
 		
 		targetSpeedEditText = (EditText) findViewById(R.id.txttargetspeed);

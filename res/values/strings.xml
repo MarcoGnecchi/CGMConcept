@@ -10,6 +10,7 @@
     <string name="carbon_content">CARBON CONTENT</string>
     <string name="type_of_wire">TYPE OF WIRE</string>
     <string name="target_speed">TARGET SPEED</string>
+    <string name="speed_wire_inlet">SPEED WIRE INLET</string>
     <string name="confirm">Confirm</string>
     <string name="average_reduction">AVERAGE REDUCTION</string>
     <string name="total_reduction">TOTAL REDUCTION</string>
@@ -19,6 +20,7 @@
     <string name="constant_reduction">Constant Reduction</string>
     <string name="numberRange">Please enter a number between 1 and 10</string>
     <string name="dieschedule">DIE SCHEDULE</string>
+    
     
     <string-array name="carbon_content_array">
         <item>0.10</item>
