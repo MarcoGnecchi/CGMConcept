@@ -1,9 +1,13 @@
 package com.cgmconcept.model;
 
+import java.text.DecimalFormat;
+
 import expr.Expr;
 import expr.Parser;
+import expr.SyntaxException;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 public class SteelDrawing implements Parcelable {
 
@@ -45,8 +49,8 @@ public class SteelDrawing implements Parcelable {
 		return mTargetSpeed;
 	}
 
-	public void setTargetSpeed(double mTargetSpeed) {
-		this.mTargetSpeed = mTargetSpeed;
+	public void setTargetSpeed(double targetSpeed) {
+		this.mTargetSpeed = targetSpeed;
 	}
 
 	public double getAverageReduction() {
@@ -59,16 +63,20 @@ public class SteelDrawing implements Parcelable {
 
 	public double getmTotalReduction() {
 		// =(1-(outlet^2/inlet^2))*100
-		String eqString = "(1-(%s^2/%s^2))*100";
-		String eqFormString = String.format(eqString, mInlet, mOutlet);
+		
+		String eqString = "(1-(%s^2)/(%s^2))*100";
+		
+		String eqFormString = String.format(eqString, mOutlet, mInlet);
 		Expr expr;
 
 		try {
-
-		} catch (Exception e) {
-			// TODO: Crashlytics
+			expr = Parser.parse(eqFormString);
+		} catch (SyntaxException e) {
+			//TODO create constants
+			Log.e("CSR", e.explain());
+			return 0;
 		}
-		return mTotalReduction;
+		return roundTwoDecimals(expr.value());
 	}
 
 	public void setmTotalReduction(int mTotalReduction) {
@@ -111,10 +119,6 @@ public class SteelDrawing implements Parcelable {
 		this.mNOfDies = mNOfDies;
 	}
 
-	public void setmTargetSpeed(double mTargetSpeed) {
-		this.mTargetSpeed = mTargetSpeed;
-	}
-
 	@Override
 	public int describeContents() {
 		return 0;
@@ -147,5 +151,8 @@ public class SteelDrawing implements Parcelable {
 			return new SteelDrawing[size];
 		}
 	};
-
+	
+	double roundTwoDecimals(double d) {
+       return Math.round((d*10.0)/10.0);
+}
 }
