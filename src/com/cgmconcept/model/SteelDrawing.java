@@ -76,7 +76,7 @@ public class SteelDrawing implements Parcelable {
 			Log.e("CSR", e.explain());
 			return 0;
 		}
-		return roundTwoDecimals(expr.value());
+		return 0;
 	}
 
 	public void setmTotalReduction(int mTotalReduction) {
@@ -152,7 +152,4 @@ public class SteelDrawing implements Parcelable {
 		}
 	};
 	
-	double roundTwoDecimals(double d) {
-       return Math.round((d*10.0)/10.0);
-}
 }
