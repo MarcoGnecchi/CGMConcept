@@ -1,7 +1,5 @@
 package com.cgmconcept;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertThat;
 import junit.framework.Assert;
 
 import org.junit.Test;
@@ -14,12 +12,6 @@ import com.cgmconcept.model.SteelDrawing;
 @RunWith(RobolectricTestRunner.class)
 public class SteelDrawingActivityTest {
 
-	 @Test
-	    public void shouldHaveHappySmiles() throws Exception {
-	        String hello = new SteelDrawingActivity().getResources().getString(R.string.app_name);
-	        assertThat(hello, equalTo("Hello World, MyActivity!"));
-	    }
-	 
 		@Test
 		public void testTotalReduction(){
 			SteelDrawing sd = new SteelDrawing();
@@ -27,7 +19,26 @@ public class SteelDrawingActivityTest {
 			sd.setOutlet(2.00);
 			sd.setNOfDies(8);
 			sd.setTargetSpeed(10.0);
-			Assert.assertEquals("Porcodio", 90.5, sd.getmTotalReduction());
+			Assert.assertEquals(90.53254437869822, sd.getTotalReduction());
 		}
 	
+		@Test
+		public void testAverageReduction(){
+			SteelDrawing sd = new SteelDrawing();
+			sd.setInlet(6.50);
+			sd.setOutlet(2.00);
+			sd.setNOfDies(8);
+			sd.setTargetSpeed(10.0);
+			Assert.assertEquals(25.521802101203527, sd.getAverageReduction());
+		}
+		
+		@Test
+		public void testSpeedWireInlet(){
+			SteelDrawing sd = new SteelDrawing();
+			sd.setInlet(6.50);
+			sd.setOutlet(2.00);
+			sd.setNOfDies(8);
+			sd.setTargetSpeed(10.0);
+			Assert.assertEquals(0.9467455621301779, sd.getSpeedWireInlet());
+		}
 }
