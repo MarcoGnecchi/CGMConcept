@@ -84,9 +84,10 @@ public class SteelDrawingActivity extends Activity implements
 
 		SteelDrawing sd = new SteelDrawing();
 		sd.setInlet(Integer.valueOf(inletEditText.getText().toString()));
-		sd.setOutlet(Integer.valueOf(inletEditText.getText().toString()));
-		sd.setNOfDies(Integer.valueOf(inletEditText.getText().toString()));
+		sd.setOutlet(Integer.valueOf(outletEditText.getText().toString()));
+		sd.setNOfDies(Integer.valueOf(nOfDiesPicker.getValue()));
 		sd.setTargetSpeed(Integer.valueOf(inletEditText.getText().toString()));
+		sd.setCarbonContent(Double.valueOf(carbonContentPicker.getValue()));
 		Intent i = new Intent(this, ConfirmData.class);
 		i.putExtra(SteelDrawing.class.getName(), sd);
 		startActivity(i);
