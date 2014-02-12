@@ -44,4 +44,51 @@
         <item>1.00</item>
         <item>1.10</item>
     </string-array>
+    
+    <string-array name="carbon_inletts">
+        <item>392.4</item>
+        <item>441.45</item>
+        <item>490.50</item>
+        <item>539.55</item>
+        <item>588.60</item>
+        <item>647.46</item>
+        <item>706.32</item>
+        <item>765.18</item>
+        <item>833.85</item>
+        <item>892.71</item>
+        <item>951.57</item>
+        <item>1010.43</item>
+        <item>1069.29</item>
+        <item>1128.15</item>
+        <item>1177.20</item>
+        <item>1226.25</item>
+        <item>1275.30</item>
+        <item>1324.35</item>
+        <item>1373.40</item>
+        <item>1471.50</item>
+    </string-array>
+    
+    <string-array name="carbon_outletts">
+        <item>907.768538318346</item>
+        <item>936.096010901630</item>
+        <item>1126.840963903750</item>
+        <item>1220.228465847890</item>
+        <item>1312.707915996460</item>
+        <item>1391.399695382340</item>
+        <item>1459.719065540770</item>
+        <item>1552.229876131550</item>
+        <item>1647.986723597560</item>
+        <item>1750.400117351560</item>
+        <item>1832.650138730360</item>
+        <item>1931.252778332090</item>
+        <item>2029.616217057640</item>
+        <item>2120.186201970900</item>
+        <item>2203.193699181060</item>
+        <item>2274.301083820820</item>
+        <item>2338.658321615020</item>
+        <item>2420.481264571750</item>
+        <item>2498.445182099090</item>
+        <item>2673.451591154970</item>
+    </string-array>
+    
 </resources>
