@@ -50,7 +50,7 @@ public class SteelDrawingActivityTest {
 			sd.setNOfDies(8);
 			sd.setTargetSpeed(10.0);
 			sd.setCarbonContent(0.15);
-			Assert.assertEquals(540, sd.getInletTs());
+			Assert.assertEquals(441.45, sd.getInletTs());
 		}
 		
 		@Test
@@ -61,6 +61,6 @@ public class SteelDrawingActivityTest {
 			sd.setNOfDies(8);
 			sd.setTargetSpeed(10.0);
 			sd.setCarbonContent(0.15);
-			Assert.assertEquals(540, sd.getInletTs());
+			Assert.assertEquals(936.096010901630, sd.getOutletTs());
 		}
 }
