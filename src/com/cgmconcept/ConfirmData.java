@@ -37,7 +37,7 @@ public class ConfirmData extends Activity {
 	    	finish();
 	    }
 		
-	    speedwireinlet.setText("");	
+//	    speedwireinlet.setText(sd.getSpeedWireInlet());	
 	}
 	
 }
