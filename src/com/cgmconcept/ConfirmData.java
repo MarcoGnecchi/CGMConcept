@@ -37,7 +37,18 @@ public class ConfirmData extends Activity {
 	    	finish();
 	    }
 		
-//	    speedwireinlet.setText(sd.getSpeedWireInlet());	
+	    inlet.setText(Double.toString(sd.getInlet()));
+	    outlet.setText(Double.toString(sd.getOutlet()));
+	    nOfDies.setText(Double.toString(sd.getNOfDies()));
+	    carbonContent.setText(Double.toString(sd.getCarbonContent()));
+	    targetSpeed.setText(Double.toString(sd.getTargetSpeed()));
+	    speedwireinlet.setText(Double.toString(sd.getSpeedWireInlet()));
+	    averagereduction.setText(Double.toString(sd.getAverageReduction()));
+	    totalReduction.setText(Double.toString(sd.getTotalReduction()));
+	    inletTS.setText(Double.toString(sd.getInletTs()));
+	    outletTS.setText(Double.toString(sd.getOutletTs()));
+	    speedwireinlet.setText(Double.toString(sd.getSpeedWireInlet()));
+	    
 	}
 	
 }

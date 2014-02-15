@@ -24,6 +24,11 @@
     <style name="inputLabel">
     </style>
     
+    <style name="confirmValue">
+        <item name="android:padding">5dp</item>
+         <item name="android:gravity">center</item>
+    </style>
+    
      <style name="measure">
          <item name="android:padding">5dp</item>
          <item name="android:gravity">center</item>
