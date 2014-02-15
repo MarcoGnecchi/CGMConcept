@@ -1,12 +1,11 @@
 package com.cgmconcept.model;
 
-import java.util.Map;
-
-import com.google.common.collect.ImmutableMap;
-
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
+
+import com.google.common.collect.ImmutableMap;
+
 import expr.Expr;
 import expr.Parser;
 import expr.SyntaxException;
@@ -208,14 +207,14 @@ public class SteelDrawing implements Parcelable {
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
 
-		dest.writeDouble(inlet);
-		dest.writeDouble(outlet);
-		dest.writeInt(nOfDies);
-		dest.writeDouble(targetSpeed);
-		dest.writeDouble(carbonContent);
+		dest.writeDouble(getInlet());
+		dest.writeDouble(getOutlet());
+		dest.writeInt(getNOfDies());
+		dest.writeDouble(getTargetSpeed());
+		dest.writeDouble(getCarbonContent());
 	}
 
-	static final Parcelable.Creator<SteelDrawing> CREATOR = new Parcelable.Creator<SteelDrawing>() {
+	public static final Parcelable.Creator<SteelDrawing> CREATOR = new Parcelable.Creator<SteelDrawing>() {
 
 		@Override
 		public SteelDrawing createFromParcel(Parcel in) {

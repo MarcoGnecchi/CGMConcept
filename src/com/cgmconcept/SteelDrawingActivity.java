@@ -15,8 +15,6 @@ import com.cgmconcept.model.SteelDrawing;
 import com.mobsandgeeks.saripaar.Rule;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.Validator.ValidationListener;
-import com.mobsandgeeks.saripaar.annotation.NumberRule;
-import com.mobsandgeeks.saripaar.annotation.NumberRule.NumberType;
 import com.mobsandgeeks.saripaar.annotation.Required;
 
 public class SteelDrawingActivity extends Activity implements
@@ -50,8 +48,8 @@ public class SteelDrawingActivity extends Activity implements
 		outletEditText = (EditText) findViewById(R.id.txtoutlet);
 		
 		nOfDiesPicker = (NumberPicker) findViewById(R.id.n_of_dies);
-		nOfDiesPicker.setMaxValue(10);
 		nOfDiesPicker.setMinValue(1);
+		nOfDiesPicker.setMaxValue(10);
 		nOfDiesPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
 		
 		
@@ -59,7 +57,7 @@ public class SteelDrawingActivity extends Activity implements
 		String[] carbonValues = getResources().getStringArray(R.array.carbon_content_array);
 		carbonContentPicker.setDisplayedValues(carbonValues);
 		carbonContentPicker.setMinValue(0);
-		carbonContentPicker.setMaxValue(carbonValues.length - 1);
+		carbonContentPicker.setMaxValue(carbonValues.length-1);
 		carbonContentPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
 		
 		
@@ -83,11 +81,11 @@ public class SteelDrawingActivity extends Activity implements
 	public void onValidationSucceeded() {
 
 		SteelDrawing sd = new SteelDrawing();
-		sd.setInlet(Integer.valueOf(inletEditText.getText().toString()));
-		sd.setOutlet(Integer.valueOf(outletEditText.getText().toString()));
+		sd.setInlet(Double.valueOf(inletEditText.getText().toString()));
+		sd.setOutlet(Double.valueOf(outletEditText.getText().toString()));
 		sd.setNOfDies(Integer.valueOf(nOfDiesPicker.getValue()));
-		sd.setTargetSpeed(Integer.valueOf(inletEditText.getText().toString()));
-		sd.setCarbonContent(Double.valueOf(carbonContentPicker.getValue()));
+		sd.setTargetSpeed(Integer.valueOf(targetSpeedEditText.getText().toString()));
+		sd.setCarbonContent(Double.valueOf(getResources().getStringArray(R.array.carbon_content_array)[carbonContentPicker.getValue()]));
 		Intent i = new Intent(this, ConfirmData.class);
 		i.putExtra(SteelDrawing.class.getName(), sd);
 		startActivity(i);

@@ -63,4 +63,13 @@ public class SteelDrawingActivityTest {
 			sd.setCarbonContent(0.15);
 			Assert.assertEquals(936.096010901630, sd.getOutletTs());
 		}
+		
+		@Test
+		public void testCarbonContent(){
+			SteelDrawing sd = new SteelDrawing();
+			sd.setCarbonContent(0.15);
+			Assert.assertEquals(0.15,sd.getCarbonContent());
+			
+			
+		}
 }
