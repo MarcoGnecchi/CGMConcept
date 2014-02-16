@@ -86,7 +86,7 @@ public class SteelDrawingActivity extends Activity implements
 		sd.setNOfDies(Integer.valueOf(nOfDiesPicker.getValue()));
 		sd.setTargetSpeed(Integer.valueOf(targetSpeedEditText.getText().toString()));
 		sd.setCarbonContent(Double.valueOf(getResources().getStringArray(R.array.carbon_content_array)[carbonContentPicker.getValue()]));
-		Intent i = new Intent(this, ConfirmData.class);
+		Intent i = new Intent(this, ConfirmDataActivity.class);
 		i.putExtra(SteelDrawing.class.getName(), sd);
 		startActivity(i);
 				

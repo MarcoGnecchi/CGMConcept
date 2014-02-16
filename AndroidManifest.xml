@@ -26,9 +26,11 @@
         </activity>
         
         <activity
-            android:name="com.cgmconcept.ConfirmData"
+            android:name="com.cgmconcept.ConfirmDataActivity"
             android:label="@string/confirm" 
             ></activity>
-    </application>
+        
+        <activity android:name="com.cgmconcept.ShowResultsActivity"></activity>
+        </application>
     
 </manifest>

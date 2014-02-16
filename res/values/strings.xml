@@ -3,7 +3,6 @@
 
     <string name="app_name">CGMConcept</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
     <string name="inlet">INLET</string>
     <string name="outlet">OUTLET</string>
     <string name="n_of_dies">N. of DIES</string>
@@ -12,6 +11,7 @@
     <string name="target_speed">TARGET SPEED</string>
     <string name="speed_wire_inlet">SPEED WIRE INLET</string>
     <string name="confirm">Confirm</string>
+    <string name="calculate">Calculate</string>
     <string name="average_reduction">AVERAGE REDUCTION</string>
     <string name="total_reduction">TOTAL REDUCTION</string>
     <string name="inlet_ts">INLET T/S</string>
