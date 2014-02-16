@@ -1,7 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-    
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
-</TableLayout>
+<android.support.v7.widget.GridLayout
+        
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:useDefaultMargins="true"
+        android:layout_margin="3dp"
+        app:columnCount="9"
+        app:rowCount="12">
+        
+        <!-- Empty spave above row headers  -->
+        <TextView
+                app:layout_rowSpan = "3"
+                app:layout_row = "0"
+                app:layout_column = "0"
+                app:layout_gravity = "fill_horizontal"
+                />
+       
+        <!-- WIRE mm -->
+        <TextView
+                app:layout_row = "0"
+                app:layout_column = "1"
+                android:text="WIEW Omm"
+                />
+             
+        <TextView
+                app:layout_row = "1"
+                app:layout_column = "1"
+                app:layout_gravity = "fill_horizontal"
+                />
+        
+        <TextView
+                app:layout_row = "2"
+                app:layout_column = "1"
+                android:text="Value"
+                />
+        
+        <!-- REDUCTION -->
+        
+        <TextView
+                app:layout_row = "0"
+                app:layout_column = "2"
+                app:layout_columnSpan = "2"
+                android:text = "REDUCTION"
+                />
+             
+        <TextView
+                app:layout_row = "1"
+                app:layout_column = "2"
+                android:text="%"
+                />
+        
+        <TextView
+                app:layout_row = "1"
+                app:layout_column = "3"
+                android:text = "Total"
+                />
+        
+        <!-- Speed -->
+        
+        <TextView
+                app:layout_row = "0"
+                app:layout_column = "4"
+                android:text = "Speed"
+                />
+             
+        <TextView
+                app:layout_row = "1"
+                app:layout_column = "4"
+                android:text="%"
+                />
+        
+        <TextView
+                app:layout_row = "2"
+                app:layout_column = "4"
+                android:text = "Value"
+                />
+        
+         <!-- REDUCTION -->
+        
+        <TextView
+                app:layout_row = "0"
+                app:layout_column = "5"
+                app:layout_columnSpan = "2"
+                android:text = "Tensile Strenght"
+                />
+             
+        <TextView
+                app:layout_row = "1"
+                app:layout_column = "5"
+                android:text="kg/mm2"
+                />
+        
+        <TextView
+                app:layout_row = "1"
+                app:layout_column = "6"
+                android:text = "N/mm2"
+                />
+        
+        <TextView
+                app:layout_row = "2"
+                app:layout_column = "5"
+                android:text="value"
+                />
+        
+        <TextView
+                app:layout_row = "2"
+                app:layout_column = "6"
+                android:text = "value"
+                />
+        
+        <!-- Pull -->
+        
+        <TextView
+                app:layout_row = "0"
+                app:layout_column = "7"
+                android:text = "Pull"
+                />
+             
+        <TextView
+                app:layout_row = "1"
+                app:layout_column = "7"
+                android:text="kg"
+                />
+        
+        <TextView
+                app:layout_row = "2"
+                app:layout_column = "7"
+                />
+        
+        
+        <!-- Power -->
+        
+        <TextView
+                app:layout_row = "0"
+                app:layout_column = "8"
+                android:text = "Power"
+                />
+             
+        <TextView
+                app:layout_row = "1"
+                app:layout_column = "8"
+                android:text="kW"
+                />
+        
+        <TextView
+                app:layout_row = "2"
+                app:layout_column = "8"
+                />
+        
+        <!-- TABLE VALUES -->
+        
+         <TextView
+             app:layout_column="0"
+             app:layout_row="3"
+             android:gravity="center"
+             android:minWidth="30dp"
+             android:text="1" />
+         
+         
+        <TextView
+             app:layout_column="1"
+             app:layout_row="3"
+             android:gravity="center"
+             android:minWidth="30dp"
+             android:text="00.0%" />
+        
+        <TextView
+             app:layout_column="2"
+             app:layout_row="3"
+             android:gravity="center"
+             android:minWidth="30dp"
+             android:text="00.0%" />
+         <TextView
+             app:layout_column="3"
+             app:layout_row="3"
+             android:gravity="center"
+             android:minWidth="30dp"
+             android:text="00.0%" />
+          <TextView
+             app:layout_column="4"
+             app:layout_row="3"
+             android:gravity="center"
+             android:minWidth="30dp"
+             android:text="00.0%" />
+         <TextView
+             app:layout_column="5"
+             app:layout_row="3"
+             android:gravity="center"
+             android:minWidth="30dp"
+             android:text="00.0%" />
+         <TextView
+             app:layout_column="6"
+             app:layout_row="3"
+             android:gravity="center"
+             android:minWidth="30dp"
+             android:text="00.0%" />
+         <TextView
+             app:layout_column="7"
+             app:layout_row="3"
+             android:gravity="center"
+             android:minWidth="30dp"
+             android:text="00.0%" />
+         <TextView
+             app:layout_column="8"
+             app:layout_row="3"
+             android:gravity="center"
+             android:minWidth="30dp"
+             android:text="00.0%" />
+         
+        
+    </android.support.v7.widget.GridLayout>
+</ScrollView>

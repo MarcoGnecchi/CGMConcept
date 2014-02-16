@@ -50,8 +50,8 @@ public class ConfirmDataActivity extends Activity {
 	    speedwireinlet.setText(Double.toString(mSteelDrawing.getSpeedWireInlet()));
 	    averagereduction.setText(Double.toString(mSteelDrawing.getAverageReduction()));
 	    totalReduction.setText(Double.toString(mSteelDrawing.getTotalReduction()));
-	    inletTS.setText(Double.toString(mSteelDrawing.getInletTs()));
-	    outletTS.setText(Double.toString(mSteelDrawing.getOutletTs()));
+	    inletTS.setText(String.format("%.2f", mSteelDrawing.getInletTs()));
+	    outletTS.setText(String.format("%.2f" ,mSteelDrawing.getOutletTs()));
 	    speedwireinlet.setText(Double.toString(mSteelDrawing.getSpeedWireInlet()));
 	    
 	}
