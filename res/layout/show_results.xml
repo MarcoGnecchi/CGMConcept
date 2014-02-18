@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" 
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent" >
 
 <android.support.v7.widget.GridLayout
         
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:useDefaultMargins="true"
         android:layout_margin="3dp"
         app:columnCount="9"
-        app:rowCount="12">
+        app:rowCount="12"
+        android:layout_gravity="center_horizontal"
+        >
         
-        <!-- Empty spave above row headers  -->
+        <!-- Empty space above row headers  -->
         <TextView
                 app:layout_rowSpan = "3"
                 app:layout_row = "0"
@@ -23,6 +25,7 @@
        
         <!-- WIRE mm -->
         <TextView
+                style="@style/headerColumn.tableHeader"
                 app:layout_row = "0"
                 app:layout_column = "1"
                 android:text="WIEW Omm"
@@ -32,12 +35,14 @@
                 app:layout_row = "1"
                 app:layout_column = "1"
                 app:layout_gravity = "fill_horizontal"
+                style="@style/headerColumn.tableUOM"
                 />
         
         <TextView
                 app:layout_row = "2"
                 app:layout_column = "1"
                 android:text="Value"
+                style="@style/headerColumn.tableAboveValue"
                 />
         
         <!-- REDUCTION -->
@@ -47,11 +52,13 @@
                 app:layout_column = "2"
                 app:layout_columnSpan = "2"
                 android:text = "REDUCTION"
+                style="@style/headerColumn.tableHeader.headerDoubleColumn"
                 />
              
         <TextView
                 app:layout_row = "1"
                 app:layout_column = "2"
+                style="@style/headerColumn.tableUOM"
                 android:text="%"
                 />
         
@@ -59,6 +66,7 @@
                 app:layout_row = "1"
                 app:layout_column = "3"
                 android:text = "Total"
+                style="@style/headerColumn.tableAboveValue"
                 />
         
         <!-- Speed -->
@@ -67,38 +75,45 @@
                 app:layout_row = "0"
                 app:layout_column = "4"
                 android:text = "Speed"
+                style="@style/headerColumn.tableHeader"
                 />
              
         <TextView
                 app:layout_row = "1"
                 app:layout_column = "4"
+                style="@style/headerColumn.tableUOM"
                 android:text="%"
+                
                 />
         
         <TextView
                 app:layout_row = "2"
                 app:layout_column = "4"
                 android:text = "Value"
+                style="@style/headerColumn.tableAboveValue"
                 />
         
-         <!-- REDUCTION -->
+         <!-- Tensile Strenght -->
         
         <TextView
                 app:layout_row = "0"
                 app:layout_column = "5"
                 app:layout_columnSpan = "2"
-                android:text = "Tensile Strenght"
+                android:text="Tensile Strenght"
+                style="@style/headerColumn.tableHeader.headerDoubleColumn"
                 />
              
         <TextView
                 app:layout_row = "1"
                 app:layout_column = "5"
+                style="@style/headerColumn.tableUOM"
                 android:text="kg/mm2"
                 />
         
         <TextView
                 app:layout_row = "1"
                 app:layout_column = "6"
+                style="@style/headerColumn.tableUOM"
                 android:text = "N/mm2"
                 />
         
@@ -106,12 +121,14 @@
                 app:layout_row = "2"
                 app:layout_column = "5"
                 android:text="value"
+                style="@style/headerColumn.tableAboveValue"
                 />
         
         <TextView
                 app:layout_row = "2"
                 app:layout_column = "6"
                 android:text = "value"
+                style="@style/headerColumn.tableAboveValue"
                 />
         
         <!-- Pull -->
@@ -120,17 +137,20 @@
                 app:layout_row = "0"
                 app:layout_column = "7"
                 android:text = "Pull"
+                style="@style/headerColumn.tableHeader"
                 />
              
         <TextView
                 app:layout_row = "1"
                 app:layout_column = "7"
+                style="@style/headerColumn.tableUOM"
                 android:text="kg"
                 />
         
         <TextView
                 app:layout_row = "2"
                 app:layout_column = "7"
+                style="@style/headerColumn.tableAboveValue"
                 />
         
         
@@ -140,17 +160,21 @@
                 app:layout_row = "0"
                 app:layout_column = "8"
                 android:text = "Power"
+                style="@style/headerColumn.tableHeader"
+                
                 />
              
         <TextView
                 app:layout_row = "1"
                 app:layout_column = "8"
+                style="@style/headerColumn.tableUOM"
                 android:text="kW"
                 />
         
         <TextView
                 app:layout_row = "2"
                 app:layout_column = "8"
+                style="@style/headerColumn.tableAboveValue"
                 />
         
         <!-- TABLE VALUES -->
@@ -168,6 +192,7 @@
              app:layout_row="3"
              android:gravity="center"
              android:minWidth="30dp"
+             style="@style/headerColumn"
              android:text="00.0%" />
         
         <TextView
@@ -175,42 +200,49 @@
              app:layout_row="3"
              android:gravity="center"
              android:minWidth="30dp"
+             style="@style/headerColumn"
              android:text="00.0%" />
          <TextView
              app:layout_column="3"
              app:layout_row="3"
              android:gravity="center"
              android:minWidth="30dp"
+             style="@style/headerColumn"
              android:text="00.0%" />
           <TextView
              app:layout_column="4"
              app:layout_row="3"
              android:gravity="center"
              android:minWidth="30dp"
+             style="@style/headerColumn"
              android:text="00.0%" />
          <TextView
              app:layout_column="5"
              app:layout_row="3"
              android:gravity="center"
              android:minWidth="30dp"
+             style="@style/headerColumn"
              android:text="00.0%" />
          <TextView
              app:layout_column="6"
              app:layout_row="3"
              android:gravity="center"
              android:minWidth="30dp"
+             style="@style/headerColumn"
              android:text="00.0%" />
          <TextView
              app:layout_column="7"
              app:layout_row="3"
              android:gravity="center"
              android:minWidth="30dp"
+             style="@style/headerColumn"
              android:text="00.0%" />
          <TextView
              app:layout_column="8"
              app:layout_row="3"
              android:gravity="center"
              android:minWidth="30dp"
+             style="@style/headerColumn"
              android:text="00.0%" />
          
         

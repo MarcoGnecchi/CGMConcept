@@ -34,4 +34,30 @@
          <item name="android:padding">5dp</item>
          <item name="android:gravity">center</item>
     </style>
+    
+     
+     <!-- TABLE LAYOUT STYLES -->
+     
+     <style name="headerColumn">
+         <item name="android:width">100dp</item>
+     </style>
+     
+     <style name="headerColumn.tableHeader">
+         <item name="android:gravity">center</item>
+     </style>
+     
+     <style name="headerColumn.tableHeader.headerDoubleColumn">
+         <item name="android:width">200dp</item>
+     </style>
+             
+     <style name="headerColumn.tableUOM">
+         <item name="android:gravity">center</item>
+     </style>
+     
+     <style name="headerColumn.tableAboveValue">
+         <item name="android:gravity">center</item>
+     </style>
+     
+     
+     
 </resources>
