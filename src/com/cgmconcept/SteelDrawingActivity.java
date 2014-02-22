@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.cgmconcept.model.SteelDrawing;
@@ -27,10 +29,10 @@ public class SteelDrawingActivity extends Activity implements
 	private EditText outletEditText;
 
 	@Required(order = 3)
-	private NumberPicker nOfDiesPicker;
+	private Spinner nOfDiesSpinner;
 
 	@Required(order = 3)
-	private NumberPicker carbonContentPicker;
+	private Spinner carbonContentSpinner;
 
 	@Required(order = 5)
 	private EditText targetSpeedEditText;
@@ -47,19 +49,15 @@ public class SteelDrawingActivity extends Activity implements
 		inletEditText = (EditText) findViewById(R.id.txtinlet);
 		outletEditText = (EditText) findViewById(R.id.txtoutlet);
 		
-		nOfDiesPicker = (NumberPicker) findViewById(R.id.n_of_dies);
-		nOfDiesPicker.setMinValue(1);
-		nOfDiesPicker.setMaxValue(10);
-		nOfDiesPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+		nOfDiesSpinner = (Spinner) findViewById(R.id.n_of_dies);
+		Integer[] nOfDies = new Integer[]{1,2,3,4,5,6,7,8,9,10};
+		ArrayAdapter<Integer> nOfDiasadapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_dropdown_item_1line, nOfDies);
+		nOfDiesSpinner.setAdapter(nOfDiasadapter);
 		
-		
-		carbonContentPicker = (NumberPicker) findViewById(R.id.carbon_content);
+		carbonContentSpinner = (Spinner) findViewById(R.id.carbon_content);
 		String[] carbonValues = getResources().getStringArray(R.array.carbon_content_array);
-		carbonContentPicker.setDisplayedValues(carbonValues);
-		carbonContentPicker.setMinValue(0);
-		carbonContentPicker.setMaxValue(carbonValues.length-1);
-		carbonContentPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
-		
+		ArrayAdapter<String> carbonContentAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, carbonValues);
+		carbonContentSpinner.setAdapter(carbonContentAdapter);
 		
 		targetSpeedEditText = (EditText) findViewById(R.id.txttargetspeed);
 		confirmButton = (Button) findViewById(R.id.btnSubmit);
@@ -83,9 +81,9 @@ public class SteelDrawingActivity extends Activity implements
 		SteelDrawing sd = new SteelDrawing();
 		sd.setInlet(Double.valueOf(inletEditText.getText().toString()));
 		sd.setOutlet(Double.valueOf(outletEditText.getText().toString()));
-		sd.setNOfDies(Integer.valueOf(nOfDiesPicker.getValue()));
+		sd.setNOfDies(Integer.valueOf((Integer) nOfDiesSpinner.getSelectedItem()));
 		sd.setTargetSpeed(Integer.valueOf(targetSpeedEditText.getText().toString()));
-		sd.setCarbonContent(Double.valueOf(getResources().getStringArray(R.array.carbon_content_array)[carbonContentPicker.getValue()]));
+		sd.setCarbonContent(Double.valueOf(carbonContentSpinner.getSelectedItem().toString()));
 		Intent i = new Intent(this, ConfirmDataActivity.class);
 		i.putExtra(SteelDrawing.class.getName(), sd);
 		startActivity(i);
@@ -110,5 +108,5 @@ public class SteelDrawingActivity extends Activity implements
 		
 		validator.validate();
 	}
-
-}
+	
+	}
