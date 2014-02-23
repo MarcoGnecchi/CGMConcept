@@ -51,12 +51,12 @@ public class SteelDrawingActivity extends Activity implements
 		
 		nOfDiesSpinner = (Spinner) findViewById(R.id.n_of_dies);
 		Integer[] nOfDies = new Integer[]{1,2,3,4,5,6,7,8,9,10};
-		ArrayAdapter<Integer> nOfDiasadapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_dropdown_item_1line, nOfDies);
+		ArrayAdapter<Integer> nOfDiasadapter = new ArrayAdapter<Integer>(this, R.layout.simple_spinner_align_center, nOfDies);
 		nOfDiesSpinner.setAdapter(nOfDiasadapter);
 		
 		carbonContentSpinner = (Spinner) findViewById(R.id.carbon_content);
 		String[] carbonValues = getResources().getStringArray(R.array.carbon_content_array);
-		ArrayAdapter<String> carbonContentAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, carbonValues);
+		ArrayAdapter<String> carbonContentAdapter = new ArrayAdapter<String>(this, R.layout.simple_spinner_align_center, carbonValues);
 		carbonContentSpinner.setAdapter(carbonContentAdapter);
 		
 		targetSpeedEditText = (EditText) findViewById(R.id.txttargetspeed);
