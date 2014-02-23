@@ -25,12 +25,18 @@
             </intent-filter>
         </activity>
         
-        <activity
-            android:name="com.cgmconcept.ConfirmDataActivity"
-            android:label="@string/confirm" 
-            ></activity>
         
-        <activity android:name="com.cgmconcept.ShowResultsActivity"></activity>
-        </application>
+	<activity
+            
+	    android:name="com.cgmconcept.ConfirmDataActivity"
+            	    android:label="@string/confirm">
+	</activity>
+        
+        
+	<activity android:name="com.cgmconcept.ShowResultsActivity">
+       	</activity>
+        
+	</application>
     
+
 </manifest>

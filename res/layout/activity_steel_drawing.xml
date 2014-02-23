@@ -28,7 +28,7 @@
                 app:layout_row="1"
                 style="@style/inputLabel"
                 android:text="@string/inlet"
-                app:layout_gravity="fill_vertical|fill_horizontal"
+                app:layout_gravity="fill"
                 
                 />
 
@@ -47,7 +47,7 @@
                 app:layout_row="1"
                 style="@style/measure"
                 android:text="mm" 
-                app:layout_gravity="fill_vertical|fill_horizontal"
+                app:layout_gravity="fill"
                 />
 
             <TextView
@@ -55,7 +55,7 @@
                 app:layout_row="2"
                 style="@style/inputLabel"
                 android:text="@string/outlet"
-                 app:layout_gravity="fill_vertical|fill_horizontal"
+                 app:layout_gravity="fill"
                 />
 
             <EditText
@@ -73,7 +73,7 @@
                 app:layout_row="2"
                 style="@style/measure"
                 android:text="mm"
-                app:layout_gravity="fill_vertical|fill_horizontal"/>
+                app:layout_gravity="fill"/>
 
             <TextView
                 style="@style/inputLabel"
