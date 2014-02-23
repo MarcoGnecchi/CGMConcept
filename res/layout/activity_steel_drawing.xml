@@ -8,8 +8,7 @@
         android:layout_margin="3dp"
         app:columnCount="4"
         app:rowCount="7"
-        android:layout_gravity="center_horizontal"
-        >
+        android:layout_gravity="center_horizontal">
         
             <TextView
                 app:layout_columnSpan = "3"
