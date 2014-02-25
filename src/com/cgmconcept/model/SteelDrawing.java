@@ -37,28 +37,49 @@ public class SteelDrawing implements Parcelable {
 			.put(1.10,1471.50)
 			.build();
 	
-	static final ImmutableMap<Double, Double> OUTLET_PASCAL = 
-		new ImmutableMap.Builder<Double, Double>()
-			.put(0.10,907.768538318346)
-			.put(0.15,936.096010901630)
-			.put(0.20,1126.840963903750)
-			.put(0.25,1220.228465847890)
-			.put(0.30,1312.707915996460)
-			.put(0.35,1391.399695382340)
-			.put(0.40,1459.719065540770)
-			.put(0.45,1552.229876131550)
-			.put(0.50,1647.986723597560)
-			.put(0.55,1750.400117351560)
-			.put(0.60,1832.650138730360)
-			.put(0.65,1931.252778332090)
-			.put(0.70,2029.616217057640)
-			.put(0.75,2120.186201970900)
-			.put(0.80,2203.193699181060)
-			.put(0.85,2274.301083820820)
-			.put(0.90,2338.658321615020)
-			.put(0.95,2420.481264571750)
-			.put(1.00,2498.445182099090)
-			.put(1.10,2673.451591154970)
+	static Double[] polinomialCoefficients010 = {40.48,-61.35,1353.90,-5837.30,11787.00,-11300.00,4148.20};
+	static Double[] polinomialCoefficients015 = {45.48,-48.70,1179.80,-5236.60,10852.00,-10609.00,3950.70};
+	static Double[] polinomialCoefficients020 = {50.72,-68.09,1816.30,-8693.20,18626.00,-18424.00,6867.00};
+	static Double[] polinomialCoefficients025 = {55.66,-56.03,1690.80,-8202.90,17828.00,-17864.00,6736.50};
+	static Double[] polinomialCoefficients030 = {60.59,-43.97,1565.20,-7712.70,17031.00,-17305.00,6606.00};
+	static Double[] polinomialCoefficients035 = {66.70,-100.91,2210.20,-10490.00,22586.00,-22536.00,8486.50};
+	static Double[] polinomialCoefficients040 = {72.81,-157.85,2855.20,-13267.00,28140.00,-27768.00,10367.00};
+	static Double[] polinomialCoefficients045 = {79.35,-170.96,3048.50,-14280.00,30481.00,-30235.00,11340.00};
+	static Double[] polinomialCoefficients050 = {85.88,-184.08,3241.90,-15294.00,32822.00,-32702.00,12315.00};
+	static Double[] polinomialCoefficients055 = {91.87,-181.93,3227.00,-32270.00,15254.00,-32817.00,32789.00};
+	static Double[] polinomialCoefficients060 = {97.87,-179.79,3212.00,-15215.00,32811.00,-32876.00,12464.00};
+	static Double[] polinomialCoefficients065 = {103.91,-194.40,3332.40,-15761.00,34015.00,-34100.00,12935.00};
+	static Double[] polinomialCoefficients070 = {109.95,-209.01,3452.70,-16307.00,35219.00,-35323.00,13405.00};
+	static Double[] polinomialCoefficients075 = {115.39,-196.79,3284.50,-15428.00,33191.00,-33249.00,12640.00};
+	static Double[] polinomialCoefficients080 = {120.91,-203.20,3351.90,-15607.00,33315.00,-33197.00,12589.00};
+	static Double[] polinomialCoefficients085 = {125.84,-170.92,2995.80,-14208.00,30738.00,-30938.00,11827.00};
+	static Double[] polinomialCoefficients090 = {130.89,-169.84,3035.60,-14596.00,31807.00,-32104.00,12282.00};
+	static Double[] polinomialCoefficients095 = {135.70,-187.51,3113.90,-14665.00,31557.00,-31563.00,12001.00};
+	static Double[] polinomialCoefficients100 = {140.64,-236.01,3585.30,-16515.00,34958.00,-34479.00,12949.00};
+	static Double[] polinomialCoefficients110 = {150.69,-252.87,3841.40,-17695.00,37455.00,-36942.00,13874.00};
+
+	static final ImmutableMap<Double, Double[]> OUTLET_COEFFICIENT_PASCAL = 
+		new ImmutableMap.Builder<Double, Double[]>()
+			.put(0.10, polinomialCoefficients010)
+			.put(0.15,polinomialCoefficients015)
+			.put(0.20,polinomialCoefficients020)
+			.put(0.25,polinomialCoefficients025)
+			.put(0.30,polinomialCoefficients030)
+			.put(0.35,polinomialCoefficients035)
+			.put(0.40,polinomialCoefficients040)
+			.put(0.45,polinomialCoefficients045)
+			.put(0.50,polinomialCoefficients050)
+			.put(0.55,polinomialCoefficients055)
+			.put(0.60,polinomialCoefficients060)
+			.put(0.65,polinomialCoefficients065)
+			.put(0.70,polinomialCoefficients070)
+			.put(0.75,polinomialCoefficients075)
+			.put(0.80,polinomialCoefficients080)
+			.put(0.85,polinomialCoefficients085)
+			.put(0.90,polinomialCoefficients090)
+			.put(0.95,polinomialCoefficients095)
+			.put(1.00,polinomialCoefficients100)
+			.put(1.10,polinomialCoefficients110)
 			.build();
 	
 	
@@ -164,7 +185,21 @@ public class SteelDrawing implements Parcelable {
 
 	public double getOutletTs() {
 		
-		return OUTLET_PASCAL.get(getCarbonContent());
+		Double[] coeff = OUTLET_COEFFICIENT_PASCAL.get(getCarbonContent());
+		//X0 + X1 * TR^1 + X2 * TR^2 + X3 * TR ^3 + X4 *TR^4 + X5*TR^5 + X6*TR^6
+		String eqString = "(%s + (%s * %s^1) + %s * %s^2 + %s * %s ^3 + %s * %s^4 + %s* %s^5 + %s* %s^6) * 9.81";
+		double tr = getTotalReduction()/100;
+		
+		String eqFormString = String.format(eqString, coeff[0], coeff[1], tr, coeff[2], tr, coeff[3], tr ,coeff[4], tr, coeff[5], tr, coeff[6], tr);
+		Expr expr;
+		
+		try {
+			expr = Parser.parse(eqFormString);
+		} catch (SyntaxException e) {
+			return 0;
+		}
+		
+		return expr.value();
 	}
 
 	public void setOutletTs(double outletTs) {
