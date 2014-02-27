@@ -204,6 +204,30 @@ public class SteelDrawing implements Parcelable {
 		
 		return expr.value();
 	}
+	
+	public double getDiameterForStep(final int step){
+	
+		if (step > nOfDies){
+			
+			throw new RuntimeException("The step is > than the number of DIES");
+		} 
+		
+//		String fromExcel = "10^(LOG($F$4)+($F$10-C24)*$J$5+(($F$10-C24)*($F$10-C24-1)/2)*$J$6";
+		String eqString = "10^( log(%s)/log(10) + ( %s - %s ) * %s +(( %s - %s )*(%s - %s - 1)/2) * %s)";
+		
+		String eqFormString = String.format(eqString, outlet, nOfDies, step, getUnknown(), nOfDies, step, nOfDies, step, getDelta());
+		Expr expr;
+		
+		try {
+			expr = Parser.parse(eqFormString);
+		} catch (SyntaxException e) {
+			
+			return 0;
+		}
+		
+		
+		return expr.value();
+	}
 
 	public double getAverageReduction() {
 		String eqString = "(1-((%s/%s)^2)^(1/%s))*100";
