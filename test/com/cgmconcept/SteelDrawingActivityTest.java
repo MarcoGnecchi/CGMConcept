@@ -99,7 +99,12 @@ public class SteelDrawingActivityTest {
 		}
 		
 		@Test
-		public void tensileStrenght(){
-			
+		public void pull(){
+			Assert.assertEquals(831.6777162060647, sd.getPull(1));
+		}
+		
+		@Test
+		public void power(){
+			Assert.assertEquals(10.994030647866285, sd.getPower(1));
 		}
 }

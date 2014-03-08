@@ -387,6 +387,35 @@ public class SteelDrawing implements Parcelable {
 		return expr.value();
 	}
 	
+	public double getPull(int step) {
+		//From Excel (((PI.GRECO()*(D17/2)^2)*LN((D16/D17)^2)*H17)/0.57)*0.95
+		String eqString = "(((pi*(%s/2)^2)*log((%s/%s)^2)*%s)/0.57)*0.95";
+		
+		String eqFormString = String.format(eqString, getDiameter(step), getDiameter(step-1), getDiameter(step), getOutletTSKG(step));
+		Expr expr;
+		
+		try {
+			expr = Parser.parse(eqFormString);
+		} catch (SyntaxException e) {
+			Log.e("CSR", e.explain());
+			return 0;
+		}
+		
+		return expr.value();
+	}
+	
+	public Double getPower(int step){
+		
+		return getPull(step)*getSpeed(step)/102;	
+	}
+
+	
+	
+	private double getOutletTSKG(int step) {
+		
+		return getOutletTS(step)/9.81;
+	}
+
 	public void setmInlet(int mInlet) {
 		this.inlet = mInlet;
 	}
@@ -433,6 +462,8 @@ public class SteelDrawing implements Parcelable {
 			return new SteelDrawing[size];
 		}
 	};
+
+
 
 
 
