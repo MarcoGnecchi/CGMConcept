@@ -316,7 +316,7 @@ public class SteelDrawing implements Parcelable {
 	}
 
 	
-	public double getInletTs() {
+	public double getInletTS() {
 			
 		return INLET_PASCAL.get(getCarbonContent());
 	}
@@ -326,12 +326,12 @@ public class SteelDrawing implements Parcelable {
 		this.inletTs = inletTs;
 	}
 
-	public double getOutletTs() {
+	public double getOutletTS(final int step) {
 		
 		Double[] coeff = OUTLET_COEFFICIENT_PASCAL.get(getCarbonContent());
 		//X0 + X1 * TR^1 + X2 * TR^2 + X3 * TR ^3 + X4 *TR^4 + X5*TR^5 + X6*TR^6
 		String eqString = "(%s + (%s * %s^1) + %s * %s^2 + %s * %s ^3 + %s * %s^4 + %s* %s^5 + %s* %s^6) * 9.81";
-		double tr = getTotalReduction()/100;
+		double tr = getTotalReductionAtStep(step)/100;
 		
 		String eqFormString = String.format(eqString, coeff[0], coeff[1], tr, coeff[2], tr, coeff[3], tr ,coeff[4], tr, coeff[5], tr, coeff[6], tr);
 		Expr expr;
@@ -365,6 +365,28 @@ public class SteelDrawing implements Parcelable {
 		return expr.value();
 	}
 
+	public double getSpeed(final int i) {
+		
+		if (i == 0){
+			return getTargetSpeed()*(1 - getTotalReduction()/100);
+		}
+		
+		//From Excel G18/1-E17
+		String eqString = "%s/(1-%s)";
+		
+		String eqFormString = String.format(eqString, getSpeed(i -1), getReduction(i));
+		Expr expr;
+		
+		try {
+			expr = Parser.parse(eqFormString);
+		} catch (SyntaxException e) {
+			Log.e("CSR", e.explain());
+			return 0;
+		}
+		
+		return expr.value();
+	}
+	
 	public void setmInlet(int mInlet) {
 		this.inlet = mInlet;
 	}
@@ -411,5 +433,8 @@ public class SteelDrawing implements Parcelable {
 			return new SteelDrawing[size];
 		}
 	};
+
+
+
 	
 }
