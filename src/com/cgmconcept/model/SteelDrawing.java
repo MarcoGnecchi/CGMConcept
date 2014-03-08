@@ -95,6 +95,7 @@ public class SteelDrawing implements Parcelable {
 	private double inletTs;
 	private double outletTs;
 	private double carbonContent;
+	private double tapeReduction;
 
 	
 	public double getCarbonContent() {
@@ -135,6 +136,97 @@ public class SteelDrawing implements Parcelable {
 
 	public void setTargetSpeed(double targetSpeed) {
 		this.targetSpeed = targetSpeed;
+	}
+	
+	public double getTapeReduction(){
+		
+		return tapeReduction;
+	}
+	
+	public void setTapeReduction(double tapeReduction){
+		
+		this.tapeReduction = tapeReduction;
+	}
+	
+	//J5
+	public double getUnknown(){
+		
+		//LOG(alpha) - LOG(output diameter)
+		
+		String eqString = "log(%s)/log(10) - log(%s)/log(10)";
+		
+		String eqFormString = String.format(eqString, getAlpha(), outlet);
+		Expr expr;
+		
+		try {
+			expr = Parser.parse(eqFormString);
+		} catch (SyntaxException e) {
+			return 0;
+		}
+		
+		
+		return expr.value();
+	}
+	
+	//J4
+	public double getAlpha(){
+		
+		//Output diameter/ sqrt(1- tape reduction)
+		
+		String eqString = "%s /sqrt(1 * (1 - %s/100))";
+		
+		String eqFormString = String.format(eqString, outlet, getTapeReduction());
+		Expr expr;
+		
+		try {
+			expr = Parser.parse(eqFormString);
+		} catch (SyntaxException e) {
+			return 0;
+		}
+				
+		return expr.value();
+	}
+
+	//J6 
+	public double getDelta(){
+		//(log(F3)/log(10 - log(F4)/log(10) - (F10 * J5))/(F10*(F10-1)/2)
+		String eqString = "(log(%s)/log(10) - log(%s)/log(10) - (%s * %s))/(%s*(%s-1)/2)";
+		
+		String eqFormString = String.format(eqString, inlet, outlet, nOfDies, getUnknown(), nOfDies, nOfDies);
+		Expr expr;
+		
+		try {
+			expr = Parser.parse(eqFormString);
+		} catch (SyntaxException e) {
+			return 0;
+		}
+		
+		
+		return expr.value();
+	}
+	
+	public double getDiameterForStep(final int step){
+	
+		if (step > nOfDies){
+			
+			throw new RuntimeException("The step is > than the number of DIES");
+		} 
+		
+//		String fromExcel = "10^(LOG($F$4)+($F$10-C24)*$J$5+(($F$10-C24)*($F$10-C24-1)/2)*$J$6";
+		String eqString = "10^( log(%s)/log(10) + ( %s - %s ) * %s +(( %s - %s )*(%s - %s - 1)/2) * %s)";
+		
+		String eqFormString = String.format(eqString, outlet, nOfDies, step, getUnknown(), nOfDies, step, nOfDies, step, getDelta());
+		Expr expr;
+		
+		try {
+			expr = Parser.parse(eqFormString);
+		} catch (SyntaxException e) {
+			
+			return 0;
+		}
+		
+		
+		return expr.value();
 	}
 
 	public double getAverageReduction() {
