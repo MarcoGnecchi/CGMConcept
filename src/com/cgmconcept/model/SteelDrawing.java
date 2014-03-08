@@ -205,12 +205,45 @@ public class SteelDrawing implements Parcelable {
 		return expr.value();
 	}
 	
-	public double getDiameterForStep(final int step){
+	public double getReduction(final int step){
+		
+		if (step > nOfDies){
+			
+			throw new RuntimeException("The step is > than the number of DIES");
+		} 
+		
+		String eqString = "1-(%s/%s)^2";
+		
+		String eqFormString = String.format(eqString, getDiameter(step), getDiameter(step-1));
+		Expr expr;
+		
+		try {
+			expr = Parser.parse(eqFormString);
+		} catch (SyntaxException e) {
+			
+			return 0;
+		}
+		
+		
+		return expr.value();
+	}
+		
+		
+	
+	
+	
+	public double getDiameter(final int step){
 	
 		if (step > nOfDies){
 			
 			throw new RuntimeException("The step is > than the number of DIES");
 		} 
+		
+		//At step 0 the diameter is equal to the input diameter
+		if (step == 0){
+			
+			return getInlet();
+		}
 		
 //		String fromExcel = "10^(LOG($F$4)+($F$10-C24)*$J$5+(($F$10-C24)*($F$10-C24-1)/2)*$J$6";
 		String eqString = "10^( log(%s)/log(10) + ( %s - %s ) * %s +(( %s - %s )*(%s - %s - 1)/2) * %s)";
@@ -251,6 +284,24 @@ public class SteelDrawing implements Parcelable {
 		String eqString = "(1-(%s^2)/(%s^2))*100";
 		
 		String eqFormString = String.format(eqString, outlet, inlet);
+		Expr expr;
+
+		try {
+			expr = Parser.parse(eqFormString);
+		} catch (SyntaxException e) {
+			//TODO create constants
+			Log.e("CSR", e.explain());
+			return 0;
+		}
+		
+		return expr.value();
+	}
+	
+	public double getTotalReductionAtStep(final int step) {
+		
+		String eqString = "(1-(%s^2)/(%s^2))*100";
+		
+		String eqFormString = String.format(eqString, getDiameter(step), inlet);
 		Expr expr;
 
 		try {
