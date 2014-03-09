@@ -37,7 +37,7 @@
                 android:id="@+id/txtinlet"
                 app:layout_gravity="fill_horizontal"
                 android:inputType="numberDecimal"
-                android:text="1"
+                android:text="6.50"
                 style="@style/inputNumbers"
                 />
 
@@ -64,7 +64,7 @@
                 android:id="@+id/txtoutlet"
                 android:inputType="numberDecimal"
                 style="@style/inputNumbers" 
-                android:text="1"
+                android:text="2.0"
                 />
 
             <TextView
@@ -79,7 +79,7 @@
                 app:layout_column="0"
                 app:layout_row="3"
                 android:text="@string/n_of_dies" 
-                 app:layout_gravity="fill_vertical|fill_horizontal"
+                app:layout_gravity="fill_vertical|fill_horizontal"
                 />
 
             <Spinner
@@ -137,7 +137,7 @@
                 app:layout_gravity="fill_horizontal"
                 android:id="@+id/txttargetspeed"
                 android:inputType="numberDecimal"
-                android:text="1"
+                android:text="10.0"
                 style="@style/inputNumbers" />
 
             <TextView

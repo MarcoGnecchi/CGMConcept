@@ -33,7 +33,7 @@ public class ConfirmDataActivity extends Activity {
 		setContentView(R.layout.confirm_data);
 		ButterKnife.inject(this);
 	    
-		SteelDrawing mSteelDrawing = null;
+		mSteelDrawing = null;
 		
 		Bundle b = getIntent().getExtras();
 	    if (b != null){
@@ -45,14 +45,14 @@ public class ConfirmDataActivity extends Activity {
 	    inlet.setText(Double.toString(mSteelDrawing.getInlet()));
 	    outlet.setText(Double.toString(mSteelDrawing.getOutlet()));
 	    nOfDies.setText(Double.toString(mSteelDrawing.getNOfDies()));
-	    carbonContent.setText(Double.toString(mSteelDrawing.getCarbonContent()));
-	    targetSpeed.setText(Double.toString(mSteelDrawing.getTargetSpeed()));
-	    speedwireinlet.setText(Double.toString(mSteelDrawing.getSpeedWireInlet()));
-	    averagereduction.setText(Double.toString(mSteelDrawing.getAverageReduction()));
-	    totalReduction.setText(Double.toString(mSteelDrawing.getTotalReduction()));
+	    carbonContent.setText(String.format("%.2f", mSteelDrawing.getCarbonContent()));
+	    targetSpeed.setText(String.format("%.2f", mSteelDrawing.getTargetSpeed()));
+	    speedwireinlet.setText(String.format("%.2f", mSteelDrawing.getSpeedWireInlet()));
+	    averagereduction.setText(String.format("%.2f", mSteelDrawing.getAverageReduction()));
+	    totalReduction.setText(String.format("%.2f", mSteelDrawing.getTotalReduction()));
 	    inletTS.setText(String.format("%.2f", mSteelDrawing.getInletTS()));
 	    outletTS.setText(String.format("%.2f" ,mSteelDrawing.getOutletTS(mSteelDrawing.getNOfDies())));
-	    speedwireinlet.setText(Double.toString(mSteelDrawing.getSpeedWireInlet()));
+	    speedwireinlet.setText(String.format("%.2f", mSteelDrawing.getSpeedWireInlet()));
 	    
 	}
 	

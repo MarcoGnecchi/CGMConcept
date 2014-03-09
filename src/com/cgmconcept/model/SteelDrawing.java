@@ -205,33 +205,6 @@ public class SteelDrawing implements Parcelable {
 		return expr.value();
 	}
 	
-	public double getReduction(final int step){
-		
-		if (step > nOfDies){
-			
-			throw new RuntimeException("The step is > than the number of DIES");
-		} 
-		
-		String eqString = "1-(%s/%s)^2";
-		
-		String eqFormString = String.format(eqString, getDiameter(step), getDiameter(step-1));
-		Expr expr;
-		
-		try {
-			expr = Parser.parse(eqFormString);
-		} catch (SyntaxException e) {
-			
-			return 0;
-		}
-		
-		
-		return expr.value();
-	}
-		
-		
-	
-	
-	
 	public double getDiameter(final int step){
 	
 		if (step > nOfDies){
@@ -262,6 +235,29 @@ public class SteelDrawing implements Parcelable {
 		return expr.value();
 	}
 
+	public double getReduction(final int step){
+		
+		if (step > nOfDies){
+			
+			throw new RuntimeException("The step is > than the number of DIES");
+		} 
+		
+		String eqString = "(1-(%s/%s)^2)";
+		
+		String eqFormString = String.format(eqString, getDiameter(step), getDiameter(step-1));
+		Expr expr;
+		
+		try {
+			expr = Parser.parse(eqFormString);
+		} catch (SyntaxException e) {
+			
+			return 0;
+		}
+		
+		
+		return expr.value();
+	}
+	
 	public double getAverageReduction() {
 		String eqString = "(1-((%s/%s)^2)^(1/%s))*100";
 		
@@ -411,7 +407,7 @@ public class SteelDrawing implements Parcelable {
 
 	
 	
-	private double getOutletTSKG(int step) {
+	public double getOutletTSKG(int step) {
 		
 		return getOutletTS(step)/9.81;
 	}

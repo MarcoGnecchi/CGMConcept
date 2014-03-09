@@ -145,7 +145,7 @@
             <TextView
                 style="@style/measure"
                 android:text="m/s" />
-</LinearLayout>
+        </LinearLayout>
             <TextView
                 android:id="@+id/targetspeed"
                 style="@style/inputNumbers"

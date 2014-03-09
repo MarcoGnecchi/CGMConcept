@@ -4,7 +4,7 @@
     android:layout_height="fill_parent" >
 
 <android.support.v7.widget.GridLayout
-        
+        android:id="@+id/gd_show_result"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -177,74 +177,6 @@
                 style="@style/headerColumn.tableAboveValue"
                 />
         
-        <!-- TABLE VALUES -->
-        
-         <TextView
-             app:layout_column="0"
-             app:layout_row="3"
-             android:gravity="center"
-             android:minWidth="30dp"
-             android:text="1" />
-         
-         
-        <TextView
-             app:layout_column="1"
-             app:layout_row="3"
-             android:gravity="center"
-             android:minWidth="30dp"
-             style="@style/headerColumn"
-             android:text="00.0%" />
-        
-        <TextView
-             app:layout_column="2"
-             app:layout_row="3"
-             android:gravity="center"
-             android:minWidth="30dp"
-             style="@style/headerColumn"
-             android:text="00.0%" />
-         <TextView
-             app:layout_column="3"
-             app:layout_row="3"
-             android:gravity="center"
-             android:minWidth="30dp"
-             style="@style/headerColumn"
-             android:text="00.0%" />
-          <TextView
-             app:layout_column="4"
-             app:layout_row="3"
-             android:gravity="center"
-             android:minWidth="30dp"
-             style="@style/headerColumn"
-             android:text="00.0%" />
-         <TextView
-             app:layout_column="5"
-             app:layout_row="3"
-             android:gravity="center"
-             android:minWidth="30dp"
-             style="@style/headerColumn"
-             android:text="00.0%" />
-         <TextView
-             app:layout_column="6"
-             app:layout_row="3"
-             android:gravity="center"
-             android:minWidth="30dp"
-             style="@style/headerColumn"
-             android:text="00.0%" />
-         <TextView
-             app:layout_column="7"
-             app:layout_row="3"
-             android:gravity="center"
-             android:minWidth="30dp"
-             style="@style/headerColumn"
-             android:text="00.0%" />
-         <TextView
-             app:layout_column="8"
-             app:layout_row="3"
-             android:gravity="center"
-             android:minWidth="30dp"
-             style="@style/headerColumn"
-             android:text="00.0%" />
-         
         
     </android.support.v7.widget.GridLayout>
 </ScrollView>
