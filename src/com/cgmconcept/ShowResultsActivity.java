@@ -50,12 +50,12 @@ public class ShowResultsActivity extends Activity {
 	    	
 	    	View reductionView = getLayoutInflater().inflate(R.layout.result_item, null);
 	    	TextView reductionValue = (TextView) reductionView.findViewById(R.id.text);
-	    	reductionValue.setText(String.format( "%.2f%", mSteelDrawing.getReduction(i)));
+	    	reductionValue.setText(String.format( "%.2f%%", mSteelDrawing.getReduction(i)*100));
 	    	gd.addView(reductionValue);
 	    	
 	    	View totReductionView = getLayoutInflater().inflate(R.layout.result_item, null);
 	    	TextView totReductionValue = (TextView) totReductionView.findViewById(R.id.text);
-	    	totReductionValue.setText(String.format( "%.2f", mSteelDrawing.getTotalReductionAtStep(i)));
+	    	totReductionValue.setText(String.format( "%.2f%%", mSteelDrawing.getTotalReductionAtStep(i)));
 	    	gd.addView(totReductionValue);
 	    	
 	    	View speedView = getLayoutInflater().inflate(R.layout.result_item, null);
