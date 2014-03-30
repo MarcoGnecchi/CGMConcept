@@ -3,6 +3,7 @@
     android:id="@+id/text"
     android:gravity="center"
     android:minWidth="30dp"
-    style="@style/headerColumn">
+    style="@style/headerColumn"
+     android:background="@color/Grey2"
+    />
        
-</TextView>

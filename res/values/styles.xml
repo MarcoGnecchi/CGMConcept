@@ -75,10 +75,14 @@
      
      <style name="headerColumn">
          <item name="android:width">100dp</item>
+         <item name="android:text">16dp</item>
      </style>
      
-     <style name="headerColumn.tableHeader">
+     <style name="headerColumn.tableHeader" >
+         <item name="android:textSize">18sp</item>
          <item name="android:gravity">center</item>
+         <item name="android:background">@color/Red</item>
+         <item name="android:textColor">@color/White</item>
      </style>
      
      <style name="headerColumn.tableHeader.headerDoubleColumn">
@@ -86,10 +90,15 @@
      </style>
              
      <style name="headerColumn.tableUOM">
+          <item name="android:background">@color/Red2</item>
+         <item name="android:textColor">@color/Grey3</item>
          <item name="android:gravity">center</item>
+          <item name="android:textSize">16sp</item>
      </style>
      
      <style name="headerColumn.tableAboveValue">
+          <item name="android:background">@color/Red</item>
+         <item name="android:textColor">@color/White</item>
          <item name="android:gravity">center</item>
      </style>
      

@@ -6,7 +6,8 @@
     android:layout_gravity="center_horizontal"
     android:layout_margin="3dp"
     android:orientation="vertical"
-    android:useDefaultMargins="true" >
+    android:useDefaultMargins="true" 
+    >
 
     <TextView
         android:layout_width="fill_parent"
