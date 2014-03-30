@@ -16,39 +16,51 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
     </style>
-
-    <style name="inputNumbers">
-       
-       <item name="android:layout_height">40dp</item>
-       <item name="android:layout_width">200dp</item>
-       <item name="android:gravity">center</item>
-       
-       
+    
+     <style name="form_layout">
+         <item name="android:layout_width">match_parent</item>
+         <item name="android:layout_height">wrap_content</item>
+         <item name="android:orientation">horizontal</item>
     </style>
     
+    <style name="inputLabel"  parent="@android:style/TextAppearance.Medium">
+        <item name="android:background">@color/Grey1</item>
+        <item name="android:gravity">right|center_vertical</item>
+        <item name="android:layout_weight">1</item>
+         <item name="android:layout_width">match_parent</item>
+         <item name="android:layout_height">fill_parent</item>
+        <item name="android:textColor">@color/White</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:padding">5dp</item>
+    </style>
     
+    <style name="inputNumbers" parent="@android:style/TextAppearance.Large">
+        <item name="android:gravity">center|center_vertical</item>
+        <item name="android:layout_weight">1</item>
+       <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+         <item name="android:layout_margin">5dp</item>
+         <item name="android:padding">5dp</item>
+    </style>
     
-    <style name="leftColumnLayout" >
-         <item name="android:background">@color/Blue</item>
+     <style name="measure" parent="@android:style/TextAppearance.Medium">
+         <item name="android:gravity">left|center_vertical</item>
+         <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:textColor">@color/White</item>
+        <item name="android:background">@color/Grey2</item>
+         <item name="android:layout_margin">5dp</item>
+         <item name="android:padding">5dp</item>
+    </style>
+    
+     
+      <style name="leftColumnLayout" >
+         <item name="android:background">@color/Grey1</item>
          <item name="android:layout_width">wrap_content</item>
          <item name="android:layout_height">wrap_content</item>
          
     </style>
-    
-    <style name="inputLabel"  parent="@android:style/TextAppearance.Medium">
-         <item name="android:layout_width">match_parent</item>
-         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/White</item>
-        <item name="android:gravity">right|bottom</item>
-    </style>
-    
-     <style name="measure" parent="@android:style/TextAppearance.Small">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/White</item>
-        <item name="android:gravity">right</item>
-    </style>
-    
     <style name="confirmValue" parent="inputLabel">
         
     </style>

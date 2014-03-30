@@ -44,7 +44,7 @@ public class SteelDrawingActivity extends Activity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.steel_drawing_newstyle);
+		setContentView(R.layout.activity_steel_drawing);
 		inletEditText = (EditText) findViewById(R.id.txtinlet);
 		outletEditText = (EditText) findViewById(R.id.txtoutlet);
 		
