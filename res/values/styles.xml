@@ -75,7 +75,9 @@
      
      <style name="headerColumn">
          <item name="android:width">100dp</item>
-         <item name="android:text">16dp</item>
+         <item name="android:textSize">16sp</item>
+         <item name="android:layout_marginLeft">1dp</item>
+         <item name="android:layout_marginRight">1dp</item>
      </style>
      
      <style name="headerColumn.tableHeader" >
