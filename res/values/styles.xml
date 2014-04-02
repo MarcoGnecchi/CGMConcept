@@ -91,6 +91,10 @@
      	 <item name="android:layout_height">wrap_content</item>
      </style>
      
+      <style name="headerColumn.tableHeader.headerDoubleColumn">
+         <item name="android:width">200dp</item>
+     </style>
+     
      <style name="headerColumn.tableUOM">
           <item name="android:background">@color/Red</item>
          <item name="android:textColor">@color/Grey3</item>

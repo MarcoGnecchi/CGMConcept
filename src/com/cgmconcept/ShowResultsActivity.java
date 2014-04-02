@@ -2,11 +2,8 @@ package com.cgmconcept;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayout;
-import android.view.Gravity;
-import android.view.View;
-import android.widget.TextView;
 
+import com.Table.TableMainLayout;
 import com.cgmconcept.model.SteelDrawing;
 
 public class ShowResultsActivity extends Activity {
@@ -16,7 +13,19 @@ public class ShowResultsActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.show_results);
+		
+		SteelDrawing mSteelDrawing = null;
+		
+		Bundle b = getIntent().getExtras();
+	    if (b != null){
+	    	mSteelDrawing = b.getParcelable(SteelDrawing.class.getName());
+	    } else {
+	    	finish();
+	    }
+		
+	    setContentView(new TableMainLayout(this, mSteelDrawing));
+		
+		/*setContentView(R.layout.show_results);
 		
 		SteelDrawing mSteelDrawing = null;
 		
@@ -83,6 +92,6 @@ public class ShowResultsActivity extends Activity {
 	    	powerValue.setText(String.format( "%.2f", mSteelDrawing.getPower(i)));
 	    	gd.addView(powerView);
 		}
-	
+	*/
 	}
 }
