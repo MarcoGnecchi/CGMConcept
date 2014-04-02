@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.cgmconcept.R;
+import com.cgmconcept.model.SteelDrawing;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -47,7 +48,7 @@ public class TableMainLayout extends RelativeLayout {
 	//TODO: get it from the view
 	int headerCellsWidth[] = new int[8];
 	
-	public TableMainLayout(Context context) {
+	public TableMainLayout(Context context, SteelDrawing sd) {
 		
 		super(context);
 		
@@ -80,7 +81,7 @@ public class TableMainLayout extends RelativeLayout {
 		
 		this.getTableRowHeaderCellWidth();
 		
-		this.generateTableC_AndTable_B();
+		this.generateTableC_AndTable_B(sd);
 		
 		this.resizeBodyTableRowHeight();
 	}
@@ -213,14 +214,27 @@ public class TableMainLayout extends RelativeLayout {
 	}
 	
 	// generate table row of table C and table D
-	private void generateTableC_AndTable_B(){
+	private void generateTableC_AndTable_B(SteelDrawing sd){
 		
 		// just seeing some header cell width
 		for(int x=0; x<this.headerCellsWidth.length; x++){
 			Log.v("TableMainLayout.java", this.headerCellsWidth[x]+"");
 		}
 		
-		for(SampleObject sampleObject : this.sampleObjects){
+		for (int i = 1; i <= sd.getNOfDies(); i++) {
+			
+			TableRow tableRowForTableC = this.tableRowForTableC(sd, i);
+			TableRow taleRowForTableD = this.taleRowForTableD(sd, i);
+			
+			tableRowForTableC.setBackgroundColor(Color.LTGRAY);
+			taleRowForTableD.setBackgroundColor(Color.LTGRAY);
+			
+			this.tableC.addView(tableRowForTableC);
+			this.tableD.addView(taleRowForTableD);
+
+		}
+		
+		/*for(SampleObject sampleObject : this.sampleObjects){
 			
 			TableRow tableRowForTableC = this.tableRowForTableC(sampleObject);
 			TableRow taleRowForTableD = this.taleRowForTableD(sampleObject);
@@ -231,36 +245,37 @@ public class TableMainLayout extends RelativeLayout {
 			this.tableC.addView(tableRowForTableC);
 			this.tableD.addView(taleRowForTableD);
 			
-		}
+		}*/
 	}
 	
 	// a TableRow for table C
-	TableRow tableRowForTableC(SampleObject sampleObject){
+	TableRow tableRowForTableC(SteelDrawing sd, int i){
 		
 		TableRow.LayoutParams params = new TableRow.LayoutParams( this.headerCellsWidth[0],LayoutParams.MATCH_PARENT);
 		params.setMargins(0, 2, 0, 0);
 		
+		//Basically this is just the row header
 		TableRow tableRowForTableC = new TableRow(this.context);
-		TextView textView = this.bodyTextView(sampleObject.header1);
+		TextView textView = this.bodyTextView(Integer.valueOf(i).toString());
 		tableRowForTableC.addView(textView,params);
 		
 		return tableRowForTableC;
 	}
 	
-	TableRow taleRowForTableD(SampleObject sampleObject){
+	TableRow taleRowForTableD(SteelDrawing sd, int i){
 
 		TableRow taleRowForTableD = new TableRow(this.context);
 		
 		int loopCount = ((TableRow)this.tableB.getChildAt(0)).getChildCount();
 		String info[] = {
-			sampleObject.header2,
-			sampleObject.header3,
-			sampleObject.header4,
-			sampleObject.header5,
-			sampleObject.header6,
-			sampleObject.header7,
-			sampleObject.header8,
-			sampleObject.header9
+				String.format( "%.2f", sd.getDiameter(i)),
+				String.format( "%.2f%%", sd.getReduction(i)*100),
+				String.format( "%.2f%%", sd.getTotalReductionAtStep(i)),
+				String.format( "%.2f", sd.getSpeed(i)),
+				String.format( "%.2f", sd.getOutletTSKG(i)),
+				String.format( "%.2f", sd.getOutletTS(i)),
+				String.format( "%.2f", sd.getPull(i)),
+				String.format( "%.2f", sd.getPower(i))
 		};
 		
 		for(int x=0 ; x<loopCount; x++){
