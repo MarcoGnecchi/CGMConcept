@@ -4,10 +4,13 @@ package com.Table;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.cgmconcept.R;
+
 import android.content.Context;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.RelativeLayout;
@@ -20,18 +23,9 @@ public class TableMainLayout extends RelativeLayout {
 
 	public final String TAG = "TableMainLayout.java";
 	
-	// source http://www.codeofaninja.com/2013/08/android-scroll-table-fixed-header-column.html
 	// set the header titles
 	String headers[] = {
-		"Header 1 \n multi-lines",
-		"Header 2",
-		"Header 3",
-		"Header 4",
-		"Header 5",
-		"Header 6",
-		"Header 7",
-		"Header 8",
-		"Header 9"
+		"Step/Value"		
 	};
 	
 	TableLayout tableA;
@@ -49,7 +43,9 @@ public class TableMainLayout extends RelativeLayout {
 	
 	List<SampleObject> sampleObjects = this.sampleObjects();
 	
-	int headerCellsWidth[] = new int[headers.length];
+	//harcoded number of headers
+	//TODO: get it from the view
+	int headerCellsWidth[] = new int[8];
 	
 	public TableMainLayout(Context context) {
 		
@@ -199,7 +195,10 @@ public class TableMainLayout extends RelativeLayout {
 	// generate table row of table B
 	TableRow componentBTableRow(){
 		
-		TableRow componentBTableRow = new TableRow(this.context);
+		LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		TableRow componentBTableRow = (TableRow) inflater.inflate(R.layout.show_result_table_headers, null);
+		return componentBTableRow;
+		/*
 		int headerFieldCount = this.headers.length;
 		
 		TableRow.LayoutParams params = new TableRow.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.MATCH_PARENT);
@@ -210,8 +209,7 @@ public class TableMainLayout extends RelativeLayout {
 			textView.setLayoutParams(params);
 			componentBTableRow.addView(textView);
 		}
-		
-		return componentBTableRow;
+		*/
 	}
 	
 	// generate table row of table C and table D

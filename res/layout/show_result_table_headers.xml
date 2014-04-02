@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+   
+    	
+   
+  
+       
+        <!-- WIRE mm -->
+	
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        
+        <TextView
+                style="@style/headerColumn.tableHeader"
+                android:text="WIEW Omm"
+                />
+             
+        <TextView
+                style="@style/headerColumn.tableUOM"
+                />
+        
+                    
+     	</LinearLayout>
+       
+        
+        <!-- REDUCTION -->
+        
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        
+        <TextView
+                android:text = "Reduction"
+                style="@style/headerColumn.tableHeader"
+                />
+             
+        <TextView
+                style="@style/headerColumn.tableUOM"
+                android:text="%"
+                />
+        
+        
+     	</LinearLayout>
+        
+		<!-- TOTAL REDUCTION -->
+        
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        
+        <TextView
+                android:text = "Total Reduction"
+                style="@style/headerColumn.tableHeader"
+                />
+        
+        <TextView
+                android:text = "Total"
+                style="@style/headerColumn.tableUOM"
+                />
+        
+     	</LinearLayout>
+        
+        
+        <!-- Speed -->
+        
+	    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+	    <TextView
+                android:text = "Speed"
+                style="@style/headerColumn.tableHeader"
+                />
+             
+        <TextView
+                style="@style/headerColumn.tableUOM"
+                android:text="%"
+                
+                />
+        
+     	</LinearLayout>
+       
+	    <!-- Tensile Strenght -->
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        
+        <TextView
+                android:text="Tensile Strenght"
+                style="@style/headerColumn.tableHeader"
+                />
+             
+        <TextView
+                style="@style/headerColumn.tableUOM"
+                android:text="kg/mm2"
+                />
+        
+     	</LinearLayout>
+
+        <!-- Pull -->
+        
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        
+        <TextView
+                android:text = "Pull"
+                style="@style/headerColumn.tableHeader"
+                />
+             
+        <TextView
+                style="@style/headerColumn.tableUOM"
+                android:text="kg"
+                />
+        
+     	</LinearLayout>
+        
+        <!-- Power -->
+        
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+                android:text = "Power"
+                style="@style/headerColumn.tableHeader"
+                
+                />
+             
+        <TextView
+                style="@style/headerColumn.tableUOM"
+                android:text="kW"
+                />
+        
+     	</LinearLayout>
+    
+    
+</TableRow>
