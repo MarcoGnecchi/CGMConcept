@@ -2,8 +2,7 @@
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/text"
     android:gravity="center"
-    android:minWidth="30dp"
     style="@style/headerColumn"
-     android:background="@color/Grey2"
+    android:background="@color/White"
     />
        

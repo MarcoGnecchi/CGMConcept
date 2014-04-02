@@ -42,7 +42,6 @@ public class TableMainLayout extends RelativeLayout {
 	
 	Context context;
 	
-	List<SampleObject> sampleObjects = this.sampleObjects();
 	
 	//harcoded number of headers
 	//TODO: get it from the view
@@ -86,32 +85,6 @@ public class TableMainLayout extends RelativeLayout {
 		this.resizeBodyTableRowHeight();
 	}
 
-	// this is just the sample data
-	List<SampleObject> sampleObjects(){
-		
-		List<SampleObject> sampleObjects = new ArrayList<SampleObject>();
-		
-		for(int x=1; x<=20; x++){
-			
-			SampleObject sampleObject = new SampleObject(
-				"Col 1, Row " + x, 
-				"Col 2, Row " + x + " - multi-lines",
-				"Col 3, Row " + x,
-				"Col 4, Row " + x,
-				"Col 5, Row " + x,
-				"Col 6, Row " + x,
-				"Col 7, Row " + x,
-				"Col 8, Row " + x,
-				"Col 9, Row " + x
-			);
-			
-			sampleObjects.add(sampleObject);
-		}
-		
-		return sampleObjects;
-	
-	}
-	
 	// initalized components 
 	private void initComponents(){
 		
@@ -278,11 +251,18 @@ public class TableMainLayout extends RelativeLayout {
 				String.format( "%.2f", sd.getPower(i))
 		};
 		
+		int layout = ((i % 2) == 0) ? R.layout.result_item_pair : R.layout.result_item_odd;
+
 		for(int x=0 ; x<loopCount; x++){
+			
+			LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			TextView textViewB = (TextView) inflater.inflate(layout, null);
+							
 			TableRow.LayoutParams params = new TableRow.LayoutParams( headerCellsWidth[x+1],LayoutParams.MATCH_PARENT);
 			params.setMargins(2, 2, 0, 0);
 			
-			TextView textViewB = this.bodyTextView(info[x]);
+			textViewB.setText(info[x]);
+			//textViewB = this.bodyTextView(info[x]);
 			taleRowForTableD.addView(textViewB,params);
 		}
 		
