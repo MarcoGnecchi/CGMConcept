@@ -1,12 +1,6 @@
 package com.Table;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.cgmconcept.R;
-import com.cgmconcept.model.SteelDrawing;
-
 import android.content.Context;
 import android.graphics.Color;
 import android.util.Log;
@@ -19,6 +13,9 @@ import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+
+import com.cgmconcept.R;
+import com.cgmconcept.model.SteelDrawing;
 
 public class TableMainLayout extends RelativeLayout {
 
@@ -69,7 +66,7 @@ public class TableMainLayout extends RelativeLayout {
 		
 		// add the components to be part of the main layout
 		this.addComponentToMainLayout();
-		this.setBackgroundColor(Color.RED);
+		this.setBackgroundColor(Color.BLACK);
 		
 		
 		// add some table rows
@@ -199,8 +196,8 @@ public class TableMainLayout extends RelativeLayout {
 			TableRow tableRowForTableC = this.tableRowForTableC(sd, i);
 			TableRow taleRowForTableD = this.taleRowForTableD(sd, i);
 			
-			tableRowForTableC.setBackgroundColor(Color.LTGRAY);
-			taleRowForTableD.setBackgroundColor(Color.LTGRAY);
+			tableRowForTableC.setBackgroundColor(Color.WHITE);
+			taleRowForTableD.setBackgroundColor(Color.BLACK);
 			
 			this.tableC.addView(tableRowForTableC);
 			this.tableD.addView(taleRowForTableD);
@@ -230,6 +227,9 @@ public class TableMainLayout extends RelativeLayout {
 		//Basically this is just the row header
 		TableRow tableRowForTableC = new TableRow(this.context);
 		TextView textView = this.bodyTextView(Integer.valueOf(i).toString());
+		textView.setBackgroundColor(((i % 2) == 0) ? Color.LTGRAY : Color.WHITE);
+		textView.setTextColor(Color.BLACK);
+		textView.setTextSize(30);
 		tableRowForTableC.addView(textView,params);
 		
 		return tableRowForTableC;
@@ -257,12 +257,12 @@ public class TableMainLayout extends RelativeLayout {
 			
 			LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			TextView textViewB = (TextView) inflater.inflate(layout, null);
-							
+			textViewB.setBackgroundColor(((i % 2) == 0) ? Color.LTGRAY : Color.WHITE);
+			
 			TableRow.LayoutParams params = new TableRow.LayoutParams( headerCellsWidth[x+1],LayoutParams.MATCH_PARENT);
 			params.setMargins(2, 2, 0, 0);
 			
 			textViewB.setText(info[x]);
-			//textViewB = this.bodyTextView(info[x]);
 			taleRowForTableD.addView(textViewB,params);
 		}
 		

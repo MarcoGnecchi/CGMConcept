@@ -7,4 +7,6 @@
  <color name="Red2">#a51d22</color>
  <color name="GreyDark">#221C1C</color>
  <color name="White">#FFFFFF</color>
+ <color name="LightGray">#FFCCCC</color>
+ <color name="Black">#000000</color>
 </resources>
