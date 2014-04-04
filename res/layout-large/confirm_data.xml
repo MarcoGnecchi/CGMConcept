@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/adlayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_horizontal"
+    android:orientation="horizontal"
+    android:weightSum="1" >
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="0.6" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="3dp"
+            android:orientation="vertical"
+            android:useDefaultMargins="true" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:background="@color/Red"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/dieschedule"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <!-- INLET -->
+
+            <LinearLayout style="@style/form_layout" >
+
+                <TextView
+                    style="@style/inputLabel"
+                    android:text="@string/inlet" />
+
+                <TextView
+                    android:id="@+id/inlet"
+                    style="@style/inputNumbers" />
+
+                <TextView
+                    style="@style/measure"
+                    android:text="mm" />
+            </LinearLayout>
+
+            <!-- OUTLET -->
+
+            <LinearLayout style="@style/form_layout" >
+
+                <TextView
+                    style="@style/inputLabel"
+                    android:text="@string/outlet" />
+
+                <TextView
+                    android:id="@+id/outlet"
+                    style="@style/inputNumbers" />
+
+                <TextView
+                    style="@style/measure"
+                    android:text="mm" />
+            </LinearLayout>
+
+            <!-- NOFDIES -->
+
+            <LinearLayout style="@style/form_layout" >
+
+                <TextView
+                    style="@style/inputLabel"
+                    android:text="@string/n_of_dies" />
+
+                <TextView
+                    android:id="@+id/n_of_dies"
+                    style="@style/inputNumbers" />
+
+                <TextView
+                    style="@style/measure"
+                    android:text="N°" />
+            </LinearLayout>
+
+            <!-- CarbonContent -->
+
+            <LinearLayout style="@style/form_layout" >
+
+                <TextView
+                    style="@style/inputLabel"
+                    android:text="@string/carbon_content" />
+
+                <TextView
+                    android:id="@+id/carbon_content"
+                    style="@style/inputNumbers" />
+
+                <TextView
+                    style="@style/measure"
+                    android:text="#" />
+            </LinearLayout>
+
+            <!-- TargetSpeed -->
+
+            <LinearLayout style="@style/form_layout" >
+
+                <TextView
+                    style="@style/inputLabel"
+                    android:text="@string/target_speed" />
+
+                <TextView
+                    android:id="@+id/targetspeed"
+                    style="@style/inputNumbers" />
+
+                <TextView
+                    style="@style/measure"
+                    android:text="m/s" />
+            </LinearLayout>
+
+            <!-- SPEED WIRE INLET -->
+
+            <LinearLayout style="@style/form_layout" >
+
+                <TextView
+                    style="@style/confirmValue"
+                    android:text="@string/speed_wire_inlet" />
+
+                <TextView
+                    android:id="@+id/speedwireinlet"
+                    style="@style/inputNumbers" />
+
+                <TextView
+                    style="@style/measure"
+                    android:text="m/s" />
+            </LinearLayout>
+
+            <!-- AVERAGE REDUCTION -->
+
+            <LinearLayout style="@style/form_layout" >
+
+                <TextView
+                    style="@style/confirmValue"
+                    android:text="@string/average_reduction" />
+
+                <TextView
+                    android:id="@+id/averagereduction"
+                    style="@style/inputNumbers" />
+
+                <TextView
+                    style="@style/measure"
+                    android:text="%" />
+            </LinearLayout>
+            <!-- TOTAL REDUCTION -->
+
+            <LinearLayout style="@style/form_layout" >
+
+                <TextView
+                    style="@style/confirmValue"
+                    android:text="@string/total_reduction" />
+
+                <TextView
+                    android:id="@+id/totalreduction"
+                    style="@style/inputNumbers" />
+
+                <TextView
+                    style="@style/measure"
+                    android:text="%" />
+            </LinearLayout>
+            <!-- INLET T/S -->
+
+            <LinearLayout style="@style/form_layout" >
+
+                <TextView
+                    style="@style/confirmValue"
+                    android:text="@string/inlet_ts" />
+
+                <TextView
+                    android:id="@+id/inletts"
+                    style="@style/inputNumbers" />
+
+                <TextView
+                    style="@style/measure"
+                    android:text="N/mm^2" />
+            </LinearLayout>
+            <!-- OUTLET T/S -->
+
+            <LinearLayout style="@style/form_layout" >
+
+                <TextView
+                    style="@style/confirmValue"
+                    android:text="@string/outlet_ts" />
+
+                <TextView
+                    android:id="@+id/outletts"
+                    style="@style/inputNumbers" />
+
+                <TextView
+                    style="@style/measure"
+                    android:text="N/mm^2" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnCalculate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="5"
+                android:text="@string/calculate" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
