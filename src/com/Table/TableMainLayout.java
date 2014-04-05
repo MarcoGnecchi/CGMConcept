@@ -246,7 +246,6 @@ public class TableMainLayout extends RelativeLayout {
 				String.format( "%.2f%%", sd.getTotalReductionAtStep(i)),
 				String.format( "%.2f", sd.getSpeed(i)),
 				String.format( "%.2f", sd.getOutletTSKG(i)),
-				String.format( "%.2f", sd.getOutletTS(i)),
 				String.format( "%.2f", sd.getPull(i)),
 				String.format( "%.2f", sd.getPower(i))
 		};

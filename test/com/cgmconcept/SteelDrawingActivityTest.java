@@ -23,7 +23,7 @@ public class SteelDrawingActivityTest {
 			this.sd.setNOfDies(8);
 			this.sd.setTargetSpeed(10.0);
 			this.sd.setCarbonContent(0.15);
-			this.sd.setTapeReduction(21.0);
+			this.sd.setTaperReduction(21.0);
 		}
 	
 		@Test
@@ -106,5 +106,15 @@ public class SteelDrawingActivityTest {
 		@Test
 		public void power(){
 			Assert.assertEquals(10.994030647866285, sd.getPower(1));
+		}
+		
+		@Test
+		public void testAveragePower(){
+			sd.getAveragePower();
+		}
+		
+		@Test
+		public void testMaxPower(){
+			sd.getMaxPower();
 		}
 }

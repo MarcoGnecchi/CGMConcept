@@ -95,7 +95,11 @@ public class SteelDrawing implements Parcelable {
 	private double inletTs;
 	private double outletTs;
 	private double carbonContent;
-	private double tapeReduction;
+	private double taperReduction;
+	private Double alpha;
+	private Double unknown;
+	private Double delta;
+	private Double[] powers = new Double[11];
 
 	
 	public double getCarbonContent() {
@@ -138,18 +142,22 @@ public class SteelDrawing implements Parcelable {
 		this.targetSpeed = targetSpeed;
 	}
 	
-	public double getTapeReduction(){
+	public double getTaperReduction(){
 		
-		return tapeReduction;
+		return taperReduction;
 	}
 	
-	public void setTapeReduction(double tapeReduction){
+	public void setTaperReduction(double tapeReduction){
 		
-		this.tapeReduction = tapeReduction;
+		this.taperReduction = tapeReduction;
 	}
 	
 	//J5
 	public double getUnknown(){
+		
+		if (this.unknown != null){
+			return unknown;
+		}
 		
 		//LOG(alpha) - LOG(output diameter)
 		
@@ -164,18 +172,23 @@ public class SteelDrawing implements Parcelable {
 			return 0;
 		}
 		
-		
-		return expr.value();
+		this.unknown = expr.value();
+		return unknown;
 	}
 	
 	//J4
 	public double getAlpha(){
 		
+		//Check cache
+		if (this.alpha != null){
+			return alpha;
+		}
+		
 		//Output diameter/ sqrt(1- tape reduction)
 		
 		String eqString = "%s /sqrt(1 * (1 - %s/100))";
 		
-		String eqFormString = String.format(eqString, outlet, getTapeReduction());
+		String eqFormString = String.format(eqString, outlet, getTaperReduction());
 		Expr expr;
 		
 		try {
@@ -183,12 +196,18 @@ public class SteelDrawing implements Parcelable {
 		} catch (SyntaxException e) {
 			return 0;
 		}
-				
-		return expr.value();
+		this.alpha = expr.value();
+		return alpha;
 	}
 
 	//J6 
 	public double getDelta(){
+		
+		if (this.delta != null){
+			
+			return delta;
+		}
+		
 		//(log(F3)/log(10 - log(F4)/log(10) - (F10 * J5))/(F10*(F10-1)/2)
 		String eqString = "(log(%s)/log(10) - log(%s)/log(10) - (%s * %s))/(%s*(%s-1)/2)";
 		
@@ -201,8 +220,8 @@ public class SteelDrawing implements Parcelable {
 			return 0;
 		}
 		
-		
-		return expr.value();
+		this.delta = expr.value();
+		return delta;
 	}
 	
 	public double getDiameter(final int step){
@@ -402,7 +421,37 @@ public class SteelDrawing implements Parcelable {
 	
 	public Double getPower(int step){
 		
-		return getPull(step)*getSpeed(step)/102;	
+		if (powers[step] != null){
+			return powers[step];
+		}
+		
+		powers[step] = getPull(step)*getSpeed(step)/102;
+		return powers[step];
+	}
+	
+	public Double getMaxPower(){
+		Double methodResult;
+		methodResult = getPower(1); 
+		
+		for (int i = 2; i <= nOfDies; i++) {
+			if (getPower(i) != null && getPower(i) > methodResult) {
+				methodResult = getPower(i);
+			}
+		}
+		
+		return methodResult;
+	}
+	
+	public Double getAveragePower(){
+		
+		Double methodResult = 0.0;
+		int i = 1;
+		do {
+			methodResult = methodResult + getPower(i);
+			i++;
+		} while (i <= nOfDies);		
+		return methodResult/(nOfDies);
+		
 	}
 
 	
@@ -437,7 +486,7 @@ public class SteelDrawing implements Parcelable {
 		dest.writeInt(getNOfDies());
 		dest.writeDouble(getTargetSpeed());
 		dest.writeDouble(getCarbonContent());
-		dest.writeDouble(getTapeReduction());
+		dest.writeDouble(getTaperReduction());
 	}
 
 	public static final Parcelable.Creator<SteelDrawing> CREATOR = new Parcelable.Creator<SteelDrawing>() {
@@ -450,7 +499,7 @@ public class SteelDrawing implements Parcelable {
 			sd.nOfDies = in.readInt();
 			sd.targetSpeed = in.readDouble();
 			sd.carbonContent = in.readDouble();
-			sd.tapeReduction = in.readDouble();
+			sd.taperReduction = in.readDouble();
 			return sd;
 		}
 
