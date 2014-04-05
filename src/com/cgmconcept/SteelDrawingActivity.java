@@ -83,6 +83,7 @@ public class SteelDrawingActivity extends Activity implements
 		sd.setNOfDies(Integer.valueOf((Integer) nOfDiesSpinner.getSelectedItem()));
 		sd.setTargetSpeed(Integer.valueOf(targetSpeedEditText.getText().toString()));
 		sd.setCarbonContent(Double.valueOf(carbonContentSpinner.getSelectedItem().toString()));
+		sd.setTapeReduction(21.0);
 		Intent i = new Intent(this, ConfirmDataActivity.class);
 		i.putExtra(SteelDrawing.class.getName(), sd);
 		startActivity(i);

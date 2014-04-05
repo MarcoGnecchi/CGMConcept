@@ -437,6 +437,7 @@ public class SteelDrawing implements Parcelable {
 		dest.writeInt(getNOfDies());
 		dest.writeDouble(getTargetSpeed());
 		dest.writeDouble(getCarbonContent());
+		dest.writeDouble(getTapeReduction());
 	}
 
 	public static final Parcelable.Creator<SteelDrawing> CREATOR = new Parcelable.Creator<SteelDrawing>() {
@@ -449,6 +450,7 @@ public class SteelDrawing implements Parcelable {
 			sd.nOfDies = in.readInt();
 			sd.targetSpeed = in.readDouble();
 			sd.carbonContent = in.readDouble();
+			sd.tapeReduction = in.readDouble();
 			return sd;
 		}
 

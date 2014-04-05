@@ -77,7 +77,7 @@ public class TableMainLayout extends RelativeLayout {
 		
 		this.getTableRowHeaderCellWidth();
 		
-		this.generateTableC_AndTable_B(sd);
+		this.generateTableC_AndTable_D(sd);
 		
 		this.resizeBodyTableRowHeight();
 	}
@@ -184,7 +184,7 @@ public class TableMainLayout extends RelativeLayout {
 	}
 	
 	// generate table row of table C and table D
-	private void generateTableC_AndTable_B(SteelDrawing sd){
+	private void generateTableC_AndTable_D(SteelDrawing sd){
 		
 		// just seeing some header cell width
 		for(int x=0; x<this.headerCellsWidth.length; x++){
