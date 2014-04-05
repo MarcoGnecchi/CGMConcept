@@ -97,7 +97,7 @@ public class TableMainLayout extends RelativeLayout {
 		this.scrollViewD = new MyScrollView(this.context);
 		
 		this.tableA.setBackgroundColor(Color.GREEN);
-		this.horizontalScrollViewB.setBackgroundColor(Color.LTGRAY);
+		this.horizontalScrollViewB.setBackgroundColor(Color.BLACK);
 		
 	}
 	
@@ -196,7 +196,7 @@ public class TableMainLayout extends RelativeLayout {
 			TableRow tableRowForTableC = this.tableRowForTableC(sd, i);
 			TableRow taleRowForTableD = this.taleRowForTableD(sd, i);
 			
-			tableRowForTableC.setBackgroundColor(Color.WHITE);
+			tableRowForTableC.setBackgroundColor(Color.BLACK);
 			taleRowForTableD.setBackgroundColor(Color.BLACK);
 			
 			this.tableC.addView(tableRowForTableC);
@@ -259,8 +259,9 @@ public class TableMainLayout extends RelativeLayout {
 			TextView textViewB = (TextView) inflater.inflate(layout, null);
 			textViewB.setBackgroundColor(((i % 2) == 0) ? Color.LTGRAY : Color.WHITE);
 			
-			TableRow.LayoutParams params = new TableRow.LayoutParams( headerCellsWidth[x+1],LayoutParams.MATCH_PARENT);
-			params.setMargins(2, 2, 0, 0);
+			int margin = 2;
+			TableRow.LayoutParams params = new TableRow.LayoutParams( headerCellsWidth[x+1] - margin,LayoutParams.MATCH_PARENT);
+			params.setMargins(margin, 2, 0, 0);
 			
 			textViewB.setText(info[x]);
 			taleRowForTableD.addView(textViewB,params);
@@ -274,7 +275,6 @@ public class TableMainLayout extends RelativeLayout {
 	TextView bodyTextView(String label){
 		
 		TextView bodyTextView = new TextView(this.context);
-		bodyTextView.setBackgroundColor(Color.WHITE);
 		bodyTextView.setText(label);
 		bodyTextView.setGravity(Gravity.CENTER);
 		bodyTextView.setPadding(5, 5, 5, 5);
@@ -320,6 +320,7 @@ public class TableMainLayout extends RelativeLayout {
 				this.headerCellsWidth[x] = this.viewWidth(((TableRow)this.tableA.getChildAt(0)).getChildAt(x));
 			}else{
 				this.headerCellsWidth[x] = this.viewWidth(((TableRow)this.tableB.getChildAt(0)).getChildAt(x-1));
+				Log.d("TableMainLayout", "Table B column " + x + " size " + headerCellsWidth[x]);
 			}
 			
 		}
