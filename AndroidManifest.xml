@@ -33,6 +33,9 @@
         
 	<activity android:name="com.cgmconcept.ShowResultsActivity">
     </activity>
+    
+	<activity android:name="com.cgmconcept.Charts">
+    </activity>
         
 	</application>
     

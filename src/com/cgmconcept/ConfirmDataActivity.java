@@ -1,7 +1,5 @@
 package com.cgmconcept;
 
-import java.util.jar.Pack200.Unpacker;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -130,8 +128,10 @@ public class ConfirmDataActivity extends Activity {
 			if (!isCancelled()){
 				Log.d("CGMConcept", "FOUND THE OPTIM VALUE as current variance = " + sdCurrent.getVariance() + " which is < of next variance "  + sdNext.getVariance());
 				Log.d("CGMConcept", "best taper reduction = " + sdCurrent.getTaperReduction());
+				progressDialog.dismiss();
 				return sdCurrent.getTaperReduction();
 			} else {
+				progressDialog.dismiss();
 				Log.d("CGMConcept", "Task has been cancelled at " + sdCurrent.getTaperReduction());
 				return null;
 			}
@@ -147,6 +147,7 @@ public class ConfirmDataActivity extends Activity {
 		protected void onPostExecute(Double result) {
 			super.onPostExecute(result);
 			mSteelDrawing.setTaperReduction(result);
+			progressDialog.dismiss();
 			Intent i = new Intent(context, ShowResultsActivity.class);
 			i.putExtra(SteelDrawing.class.getName(), mSteelDrawing);
 			startActivity(i);

@@ -1,20 +1,24 @@
 package com.cgmconcept;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.Table.TableMainLayout;
 import com.cgmconcept.model.SteelDrawing;
 
 public class ShowResultsActivity extends Activity {
 
-	SteelDrawing sd;
+	SteelDrawing mSteelDrawing;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		SteelDrawing mSteelDrawing = null;
+		mSteelDrawing = null;
 		
 		Bundle b = getIntent().getExtras();
 	    if (b != null){
@@ -24,74 +28,34 @@ public class ShowResultsActivity extends Activity {
 	    }
 		
 	    setContentView(new TableMainLayout(this, mSteelDrawing));
-		
-		/*setContentView(R.layout.show_results);
-		
-		SteelDrawing mSteelDrawing = null;
-		
-		Bundle b = getIntent().getExtras();
-	    if (b != null){
-	    	mSteelDrawing = b.getParcelable(SteelDrawing.class.getName());
-	    } else {
-	    	finish();
-	    }
-	
-	    //TODO set for the TAPER value
-	    mSteelDrawing.setTapeReduction(21.0);
-	    
-	    GridLayout gd = (GridLayout) findViewById(R.id.gd_show_result);
-	    
-	    for (int i = 1; i <= mSteelDrawing.getNOfDies(); i++) {
-			int layout = ((i % 2) == 0) ? R.layout.result_item_pair : R.layout.result_item_odd;
-	    	gd.setRowCount(gd.getRowCount() + 1);
-	    	
-	    	TextView tv = new TextView(this);
-	    	tv.setGravity(Gravity.CENTER);
-	    	tv.setText(String.valueOf(i));
-	    	
-	    	gd.addView(tv);
-	    	
-	    	
-	    	View diameterView = getLayoutInflater().inflate(layout, null);
-	    	TextView diameterValue = (TextView) diameterView.findViewById(R.id.text);
-	    	diameterValue.setText(String.format( "%.2f", mSteelDrawing.getDiameter(i)));
-	    	gd.addView(diameterView);
-	    	
-	    	View reductionView = getLayoutInflater().inflate(layout, null);
-	    	TextView reductionValue = (TextView) reductionView.findViewById(R.id.text);
-	    	reductionValue.setText(String.format( "%.2f%%", mSteelDrawing.getReduction(i)*100));
-	    	gd.addView(reductionValue);
-	    	
-	    	View totReductionView = getLayoutInflater().inflate(layout, null);
-	    	TextView totReductionValue = (TextView) totReductionView.findViewById(R.id.text);
-	    	totReductionValue.setText(String.format( "%.2f%%", mSteelDrawing.getTotalReductionAtStep(i)));
-	    	gd.addView(totReductionValue);
-	    	
-	    	View speedView = getLayoutInflater().inflate(layout, null);
-	    	TextView speedValue = (TextView) speedView.findViewById(R.id.text);
-	    	speedValue.setText(String.format( "%.2f", mSteelDrawing.getSpeed(i)));
-	    	gd.addView(speedValue);
-	    	
-	    	View outletTSViewKG = getLayoutInflater().inflate(layout, null);
-	    	TextView outletTSValueKG = (TextView) outletTSViewKG.findViewById(R.id.text);
-	    	outletTSValueKG.setText(String.format( "%.2f", mSteelDrawing.getOutletTSKG(i)));
-	    	gd.addView(outletTSViewKG);
-	    	
-	    	View outletTSView = getLayoutInflater().inflate(layout, null);
-	    	TextView outletTSValue = (TextView) outletTSView.findViewById(R.id.text);
-	    	outletTSValue.setText(String.format( "%.2f", mSteelDrawing.getOutletTS(i)));
-	    	gd.addView(outletTSView);
-	    	
-	    	View pullView = getLayoutInflater().inflate(layout, null);
-	    	TextView pullValue = (TextView) pullView.findViewById(R.id.text);
-	    	pullValue.setText(String.format( "%.2f", mSteelDrawing.getPull(i)));
-	    	gd.addView(pullView);
-	    	
-	    	View powerView = getLayoutInflater().inflate(layout, null);
-	    	TextView powerValue = (TextView) powerView.findViewById(R.id.text);
-	    	powerValue.setText(String.format( "%.2f", mSteelDrawing.getPower(i)));
-	    	gd.addView(powerView);
-		}
-	*/
 	}
+	
+	@Override
+	  public boolean onCreateOptionsMenu(Menu menu) {
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.steel_drawing, menu);
+	    return true;
+	  } 
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle presses on the action bar items
+	    switch (item.getItemId()) {
+	        case R.id.action_charts:
+	        	openChartView();
+	            return true;
+	        case R.id.action_email:
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
+
+	private void openChartView() {
+		Intent i = new Intent(ShowResultsActivity.this, Charts.class);
+		i.putExtra(SteelDrawing.class.getName(), mSteelDrawing);
+		startActivity(i);
+	}
+	
+	
 }
