@@ -81,7 +81,7 @@ public class SteelDrawingActivity extends Activity implements
 		sd.setInlet(Double.valueOf(inletEditText.getText().toString()));
 		sd.setOutlet(Double.valueOf(outletEditText.getText().toString()));
 		sd.setNOfDies(Integer.valueOf((Integer) nOfDiesSpinner.getSelectedItem()));
-		sd.setTargetSpeed(Integer.valueOf(targetSpeedEditText.getText().toString()));
+		sd.setTargetSpeed(Double.valueOf(targetSpeedEditText.getText().toString()));
 		sd.setCarbonContent(Double.valueOf(carbonContentSpinner.getSelectedItem().toString()));
 		sd.setTaperReduction(21.0);
 		Intent i = new Intent(this, ConfirmDataActivity.class);

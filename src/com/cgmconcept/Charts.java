@@ -7,8 +7,12 @@ import org.achartengine.model.XYSeries;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
 import org.achartengine.renderer.XYSeriesRenderer;
 
+import android.app.ActionBar;
+import android.app.ActionBar.Tab;
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.widget.LinearLayout;
 
 import com.cgmconcept.model.SteelDrawing;
@@ -23,7 +27,8 @@ public class Charts extends Activity {
 
     private XYMultipleSeriesRenderer mRenderer = new XYMultipleSeriesRenderer();
 
-    private XYSeries mCurrentSeries;
+    private XYSeries mPowerSeries;
+//    private XYSeries mTensileSeries;
 
     private XYSeriesRenderer mCurrentRenderer;
 	
@@ -41,6 +46,7 @@ public class Charts extends Activity {
 	    }
 		
 	    setContentView(R.layout.charts);
+	    
 	}
 	
 	@Override
@@ -58,17 +64,25 @@ public class Charts extends Activity {
 	}
 
 	private void addSampleData() {
-		 	mCurrentSeries.add(1, 2);
-	        mCurrentSeries.add(2, 3);
-	        mCurrentSeries.add(3, 2);
-	        mCurrentSeries.add(4, 5);
-	        mCurrentSeries.add(5, 4);
+		
+			mPowerSeries.setTitle("POWER");
+			for (int i = 1; i < mSteelDrawing.getNOfDies(); i++) {
+				mPowerSeries.add(i, mSteelDrawing.getPower(i));
+			}
+			
+//			for (int i = 1; i < mSteelDrawing.getNOfDies(); i++) {
+//				mPowerSeries.add(i, mSteelDrawing.getOutletTSKG(i));
+//			}
+			
 	}
 
 	private void initChart() {
-		mCurrentSeries = new XYSeries("Sample Data");
-        mDataset.addSeries(mCurrentSeries);
+		mPowerSeries = new XYSeries("Power");
+        mDataset.addSeries(mPowerSeries);
+        //mDataset.addSeries(mTensileSeries);
+        
         mCurrentRenderer = new XYSeriesRenderer();
+        mCurrentRenderer.setColor(Color.GREEN);
         mRenderer.addSeriesRenderer(mCurrentRenderer);
 	}
 }
