@@ -9,6 +9,7 @@ import com.google.common.collect.ImmutableMap;
 import expr.Expr;
 import expr.Parser;
 import expr.SyntaxException;
+import expr.Variable;
 
 public class SteelDrawing implements Parcelable {
 
@@ -101,6 +102,19 @@ public class SteelDrawing implements Parcelable {
 	private Double delta;
 	private Double[] powers = new Double[11];
 
+	public SteelDrawing(){
+		super();
+	}
+	
+	//Object for cloning
+	public SteelDrawing(SteelDrawing sdIn) {
+		this.inlet = sdIn.getInlet();
+		this.outlet = sdIn.getOutlet();
+		this.nOfDies = sdIn.getNOfDies();
+		this.targetSpeed = sdIn.getTargetSpeed();
+		this.carbonContent = sdIn.getCarbonContent();
+		this.taperReduction = sdIn.getTaperReduction();
+	}
 	
 	public double getCarbonContent() {
 		return carbonContent;
@@ -452,6 +466,11 @@ public class SteelDrawing implements Parcelable {
 		} while (i <= nOfDies);		
 		return methodResult/(nOfDies);
 		
+	}
+	
+	public Double getVariance(){
+		
+		return getMaxPower() - getAveragePower();
 	}
 
 	

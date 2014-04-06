@@ -1,16 +1,23 @@
 package com.cgmconcept;
 
-import com.cgmconcept.model.SteelDrawing;
+import java.util.jar.Pack200.Unpacker;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.Button;
+import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import com.cgmconcept.model.SteelDrawing;
 
 public class ConfirmDataActivity extends Activity {
 	
@@ -24,7 +31,8 @@ public class ConfirmDataActivity extends Activity {
 	@InjectView(R.id.totalreduction) TextView totalReduction;
 	@InjectView(R.id.inletts) TextView inletTS;
 	@InjectView(R.id.outletts) TextView outletTS;
-	@InjectView(R.id.btnCalculate) Button btnCalculate;
+	@InjectView(R.id.btnConstant) Button btnConstant;
+	@InjectView(R.id.btnOptimized) Button btnOptimised;
 	
 	private SteelDrawing mSteelDrawing;
 	
@@ -56,12 +64,100 @@ public class ConfirmDataActivity extends Activity {
 	    
 	}
 	
-	@OnClick(R.id.btnCalculate)
-	public void submit(){
-		Toast.makeText(this, "Clicked!", Toast.LENGTH_SHORT).show();
+	@OnClick(R.id.btnConstant)
+	public void submitConstant(){
+		//Standard taper reduction
+		mSteelDrawing.setTaperReduction(21.0);
 		Intent i = new Intent(this, ShowResultsActivity.class);
 		i.putExtra(SteelDrawing.class.getName(), mSteelDrawing);
 		startActivity(i);
 	}
+	
+	@OnClick(R.id.btnOptimized)
+	public void submitOptimized(){
+		new OptimizeTaperReduction(ConfirmDataActivity.this).execute(mSteelDrawing);
+	}
+	
+	
+	private class OptimizeTaperReduction extends AsyncTask<SteelDrawing, Double, Double>{
+		
+		private ProgressDialog progressDialog;
+		private Context context;
+		
+		public OptimizeTaperReduction(Context context) {
+			this.context = context;
+		}
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			progressDialog = new ProgressDialog(context);
+			progressDialog.setTitle("GCMConcept");
+			progressDialog.setMessage("Starting optimization");
+			progressDialog.setCancelable(true);
+			progressDialog.setOnCancelListener(new OnCancelListener() {
+				
+				@Override
+				public void onCancel(DialogInterface dialog) {
+					cancel(true);
+				}
+			});
+            progressDialog.show();
+		}
+		@Override
+		protected Double doInBackground(SteelDrawing... steelDrawing) {
+			//Looking for a good taper reduction
+			SteelDrawing sdCurrent;
+			SteelDrawing sdNext;
+			double taperReduction = 10.0;
+			//setInitialData
+			sdCurrent = new SteelDrawing(steelDrawing[0]);
+			sdCurrent.setTaperReduction(taperReduction);
+			
+			taperReduction = taperReduction + 0.5;
+			sdNext = new SteelDrawing(mSteelDrawing);
+			sdNext.setTaperReduction(taperReduction);
+			publishProgress(taperReduction);
+			while(sdCurrent.getVariance() > sdNext.getVariance() && taperReduction < 30.0 && !isCancelled()) {
+					Log.d("CGMConcept", " current variance = " + sdCurrent.getVariance() + " which is > of next variance "  + sdNext.getVariance());
+					taperReduction = taperReduction + 0.5;
+					sdCurrent = sdNext;
+					sdNext = new SteelDrawing(mSteelDrawing);
+					sdNext.setTaperReduction(taperReduction);
+					publishProgress(taperReduction);
+			}
+			
+			if (!isCancelled()){
+				Log.d("CGMConcept", "FOUND THE OPTIM VALUE as current variance = " + sdCurrent.getVariance() + " which is < of next variance "  + sdNext.getVariance());
+				Log.d("CGMConcept", "best taper reduction = " + sdCurrent.getTaperReduction());
+				return sdCurrent.getTaperReduction();
+			} else {
+				Log.d("CGMConcept", "Task has been cancelled at " + sdCurrent.getTaperReduction());
+				return null;
+			}
+		}
+		
+		@Override
+		protected void onProgressUpdate(Double... values) {
+			super.onProgressUpdate(values);
+			progressDialog.setMessage("Testing taper reduction " + values[0].toString());
+		}
+		
+		@Override
+		protected void onPostExecute(Double result) {
+			super.onPostExecute(result);
+			mSteelDrawing.setTaperReduction(result);
+			Intent i = new Intent(context, ShowResultsActivity.class);
+			i.putExtra(SteelDrawing.class.getName(), mSteelDrawing);
+			startActivity(i);
+		}
+		
+		@Override
+		protected void onCancelled() {
+			super.onCancelled();
+			Log.i("CGMConcept", "Cancelled");
+		}
+	}
+	
 	
 }

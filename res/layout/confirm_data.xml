@@ -191,12 +191,27 @@
                 android:text="N/mm^2" />
         </LinearLayout>
 
+        <LinearLayout 
+         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+         >
+            
         <Button
-            android:layout_width="match_parent"
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/btnCalculate"
+            android:id="@+id/btnConstant"
             android:ems="5"
-            android:text="@string/calculate" />
+            android:text="@string/constant" />
+         <Button
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnOptimized"
+            android:ems="5"
+            android:text="@string/optimized" />
+        </LinearLayout>
     </LinearLayout>
 
 </ScrollView>
