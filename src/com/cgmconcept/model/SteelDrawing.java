@@ -101,6 +101,7 @@ public class SteelDrawing implements Parcelable {
 	private Double unknown;
 	private Double delta;
 	private Double[] powers = new Double[11];
+	private Double[] diameters = new Double[11];
 
 	public SteelDrawing(){
 		super();
@@ -245,6 +246,11 @@ public class SteelDrawing implements Parcelable {
 			throw new RuntimeException("The step is > than the number of DIES");
 		} 
 		
+		//Check cache
+		if (diameters[step] != null){
+			return diameters[step];
+		}
+		
 		//At step 0 the diameter is equal to the input diameter
 		if (step == 0){
 			
@@ -264,8 +270,8 @@ public class SteelDrawing implements Parcelable {
 			return 0;
 		}
 		
-		
-		return expr.value();
+		diameters[step] = expr.value();
+		return diameters[step];
 	}
 
 	public double getReduction(final int step){
