@@ -107,7 +107,7 @@ public class ConfirmDataActivity extends Activity {
 			//Looking for a good taper reduction
 			SteelDrawing sdCurrent;
 			SteelDrawing sdNext;
-			double taperReduction = 10.0;
+			double taperReduction = 5.0;
 			//setInitialData
 			sdCurrent = new SteelDrawing(steelDrawing[0]);
 			sdCurrent.setTaperReduction(taperReduction);
@@ -116,7 +116,7 @@ public class ConfirmDataActivity extends Activity {
 			sdNext = new SteelDrawing(mSteelDrawing);
 			sdNext.setTaperReduction(taperReduction);
 			publishProgress(taperReduction);
-			while(sdCurrent.getVariance() > sdNext.getVariance() && taperReduction < 30.0 && !isCancelled()) {
+			while(sdCurrent.getVariance() > sdNext.getVariance() && taperReduction < 50.0 && !isCancelled()) {
 					Log.d("CGMConcept", " current variance = " + sdCurrent.getVariance() + " which is > of next variance "  + sdNext.getVariance());
 					taperReduction = taperReduction + 0.5;
 					sdCurrent = sdNext;

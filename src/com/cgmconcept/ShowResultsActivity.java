@@ -1,11 +1,14 @@
 package com.cgmconcept;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import com.Table.TableMainLayout;
 import com.cgmconcept.model.SteelDrawing;
@@ -45,7 +48,11 @@ public class ShowResultsActivity extends Activity {
 	        	openChartView();
 	            return true;
 	        case R.id.action_email:
+	        	showDialog();
 	            return true;
+	        case R.id.action_settings:
+	        	showDialog();
+	        	return true;
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }
@@ -55,6 +62,22 @@ public class ShowResultsActivity extends Activity {
 		Intent i = new Intent(ShowResultsActivity.this, Charts.class);
 		i.putExtra(SteelDrawing.class.getName(), mSteelDrawing);
 		startActivity(i);
+	}
+	
+	private void showDialog(){
+		final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+		alertDialog.setTitle("Not available");
+		alertDialog.setMessage("The functionality is not available in the free version, please contact www.cgmconcept.com");
+		alertDialog.setIcon(R.drawable.ic_launcher);
+		alertDialog.setButton(DialogInterface.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				
+				alertDialog.dismiss();
+			}
+		});
+		alertDialog.show();
 	}
 	
 	
