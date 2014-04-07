@@ -5,5 +5,26 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
+    <TextView
+            android:id="@+id/textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="POWER"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:layout_margin="5dp"
+            android:background="@color/Red"
+            android:textColor="@color/White"
+            >
+    </TextView>
 
+    <LinearLayout
+    android:id="@+id/chart"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+        
+
+    </LinearLayout>
 </LinearLayout>

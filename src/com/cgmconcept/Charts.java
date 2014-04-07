@@ -2,17 +2,16 @@ package com.cgmconcept;
 
 import org.achartengine.ChartFactory;
 import org.achartengine.GraphicalView;
+import org.achartengine.chart.BarChart;
+import org.achartengine.chart.PointStyle;
 import org.achartengine.model.XYMultipleSeriesDataset;
 import org.achartengine.model.XYSeries;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
 import org.achartengine.renderer.XYSeriesRenderer;
 
-import android.app.ActionBar;
-import android.app.ActionBar.Tab;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
 import android.widget.LinearLayout;
 
 import com.cgmconcept.model.SteelDrawing;
@@ -56,7 +55,7 @@ public class Charts extends Activity {
 	      if (mChart == null) {
 	            initChart();
 	            addSampleData();
-	            mChart = ChartFactory.getCubeLineChartView(this, mDataset, mRenderer, 0.3f);
+	            mChart = ChartFactory.getLineChartView(this, mDataset, mRenderer);
 	            layout.addView(mChart);
 	        } else {
 	            mChart.repaint();
@@ -65,24 +64,22 @@ public class Charts extends Activity {
 
 	private void addSampleData() {
 		
-			mPowerSeries.setTitle("POWER");
 			for (int i = 1; i < mSteelDrawing.getNOfDies(); i++) {
 				mPowerSeries.add(i, mSteelDrawing.getPower(i));
 			}
 			
-//			for (int i = 1; i < mSteelDrawing.getNOfDies(); i++) {
-//				mPowerSeries.add(i, mSteelDrawing.getOutletTSKG(i));
-//			}
-			
 	}
 
 	private void initChart() {
-		mPowerSeries = new XYSeries("Power");
+		mPowerSeries = new XYSeries("");
         mDataset.addSeries(mPowerSeries);
-        //mDataset.addSeries(mTensileSeries);
         
         mCurrentRenderer = new XYSeriesRenderer();
-        mCurrentRenderer.setColor(Color.GREEN);
+        mCurrentRenderer.setColor(Color.RED);
+        mCurrentRenderer.setLineWidth(10);
         mRenderer.addSeriesRenderer(mCurrentRenderer);
+        mRenderer.setZoomEnabled(false);
+        mRenderer.setPointSize(10);
+        mRenderer.setLabelsTextSize(30);
 	}
 }
