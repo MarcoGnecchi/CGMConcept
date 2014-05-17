@@ -76,7 +76,7 @@ public class Charts extends Activity {
         
         mCurrentRenderer = new XYSeriesRenderer();
         mCurrentRenderer.setColor(Color.RED);
-        mCurrentRenderer.setLineWidth(10);
+        mCurrentRenderer.setLineWidth(5);
         mRenderer.addSeriesRenderer(mCurrentRenderer);
         mRenderer.setZoomEnabled(false);
         mRenderer.setPointSize(10);

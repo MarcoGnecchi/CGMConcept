@@ -1,5 +1,7 @@
 package com.cgmconcept;
 
+import java.util.Locale;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -48,17 +50,17 @@ public class ConfirmDataActivity extends Activity {
 	    	finish();
 	    }
 		
-	    inlet.setText(Double.toString(mSteelDrawing.getInlet()));
-	    outlet.setText(Double.toString(mSteelDrawing.getOutlet()));
-	    nOfDies.setText(Double.toString(mSteelDrawing.getNOfDies()));
-	    carbonContent.setText(String.format("%.2f", mSteelDrawing.getCarbonContent()));
-	    targetSpeed.setText(String.format("%.2f", mSteelDrawing.getTargetSpeed()));
-	    speedwireinlet.setText(String.format("%.2f", mSteelDrawing.getSpeedWireInlet()));
-	    averagereduction.setText(String.format("%.2f", mSteelDrawing.getAverageReduction()));
-	    totalReduction.setText(String.format("%.2f", mSteelDrawing.getTotalReduction()));
-	    inletTS.setText(String.format("%.2f", mSteelDrawing.getInletTS()));
-	    outletTS.setText(String.format("%.2f" ,mSteelDrawing.getOutletTS(mSteelDrawing.getNOfDies())));
-	    speedwireinlet.setText(String.format("%.2f", mSteelDrawing.getSpeedWireInlet()));
+	    inlet.setText(String.format(Locale.ENGLISH, "%.2f", mSteelDrawing.getInlet()));
+	    outlet.setText(String.format(Locale.ENGLISH, "%.2f", mSteelDrawing.getOutlet()));
+	    nOfDies.setText(mSteelDrawing.getNOfDies() + "");
+	    carbonContent.setText(String.format(Locale.ENGLISH, "%.2f", mSteelDrawing.getCarbonContent()));
+	    targetSpeed.setText(String.format(Locale.ENGLISH, "%.0f", mSteelDrawing.getTargetSpeed()));
+	    speedwireinlet.setText(String.format(Locale.ENGLISH, "%.2f", mSteelDrawing.getSpeedWireInlet()));
+	    averagereduction.setText(String.format(Locale.ENGLISH, "%.2f", mSteelDrawing.getAverageReduction()));
+	    totalReduction.setText(String.format(Locale.ENGLISH, "%.2f", mSteelDrawing.getTotalReduction()));
+	    inletTS.setText(String.format(Locale.ENGLISH, "%.0f", mSteelDrawing.getInletTS()));
+	    outletTS.setText(String.format(Locale.ENGLISH, "%.0f" ,mSteelDrawing.getOutletTS(mSteelDrawing.getNOfDies())));
+	    speedwireinlet.setText(String.format(Locale.ENGLISH, "%.2f", mSteelDrawing.getSpeedWireInlet()));
 	    
 	}
 	

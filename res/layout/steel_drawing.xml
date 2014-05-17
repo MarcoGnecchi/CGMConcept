@@ -32,7 +32,7 @@
             android:id="@+id/txtinlet"
             style="@style/inputNumbers"
             android:inputType="numberDecimal"
-            android:text="6.50" />
+            />
 
         <TextView
             style="@style/measure"
@@ -49,7 +49,7 @@
             android:id="@+id/txtoutlet"
             style="@style/inputNumbers"
             android:inputType="numberDecimal"
-            android:text="2.0" />
+             />
 
         <TextView
             style="@style/measure"
@@ -68,7 +68,7 @@
 
         <TextView
             style="@style/measure"
-            android:text="N°" />
+            android:text="#" />
     </LinearLayout>
 
     <LinearLayout style="@style/form_layout" >
@@ -83,7 +83,7 @@
 
         <TextView
             style="@style/measure"
-            android:text="#" />
+            android:text="%" />
     </LinearLayout>
 
     <LinearLayout style="@style/form_layout" >
@@ -95,8 +95,8 @@
         <EditText
             android:id="@+id/txttargetspeed"
             style="@style/inputNumbers"
-            android:inputType="numberDecimal"
-            android:text="10" />
+            android:inputType="number"
+           />
 
         <TextView
             style="@style/measure"

@@ -71,7 +71,7 @@
 
             <TextView
                 style="@style/measure"
-                android:text="N°" />
+                android:text="#" />
         </LinearLayout>
 
         <!-- CarbonContent -->
@@ -89,7 +89,7 @@
 
             <TextView
                 style="@style/measure"
-                android:text="#" />
+                android:text="%" />
         </LinearLayout>
 
         <!-- TargetSpeed -->
