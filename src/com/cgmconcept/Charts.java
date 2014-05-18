@@ -2,8 +2,6 @@ package com.cgmconcept;
 
 import org.achartengine.ChartFactory;
 import org.achartengine.GraphicalView;
-import org.achartengine.chart.BarChart;
-import org.achartengine.chart.PointStyle;
 import org.achartengine.model.XYMultipleSeriesDataset;
 import org.achartengine.model.XYSeries;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
@@ -12,11 +10,12 @@ import org.achartengine.renderer.XYSeriesRenderer;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.widget.LinearLayout;
 
 import com.cgmconcept.model.SteelDrawing;
 
-public class Charts extends Activity {
+public class Charts extends Fragment {
 
 	
 	SteelDrawing mSteelDrawing;
@@ -32,7 +31,7 @@ public class Charts extends Activity {
     private XYSeriesRenderer mCurrentRenderer;
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreateView(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
 		mSteelDrawing = null;

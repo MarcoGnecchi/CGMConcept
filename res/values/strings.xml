@@ -5,10 +5,10 @@
     <string name="action_settings">Settings</string>
     <string name="inlet">INLET</string>
     <string name="outlet">OUTLET</string>
-    <string name="n_of_dies">N. of DIES</string>
-    <string name="carbon_content">CARBON CONTENT</string>
+    <string name="n_of_dies">STEPS</string>
+    <string name="carbon_content">CARBON</string>
     <string name="type_of_wire">TYPE OF WIRE</string>
-    <string name="target_speed">TARGET SPEED</string>
+    <string name="target_speed">SPEED</string>
     <string name="speed_wire_inlet">SPEED WIRE INLET</string>
     <string name="confirm">Confirm</string>
     <string name="calculate">Calculate</string>

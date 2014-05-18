@@ -68,6 +68,7 @@ public class ConfirmDataActivity extends Activity {
 	public void submitConstant(){
 		//Standard taper reduction
 		mSteelDrawing.setTaperReduction(21.0);
+		mSteelDrawing.isTRConstant(true);
 		Intent i = new Intent(this, ShowResultsActivity.class);
 		i.putExtra(SteelDrawing.class.getName(), mSteelDrawing);
 		startActivity(i);

@@ -102,6 +102,7 @@ public class SteelDrawing implements Parcelable {
 	private Double delta;
 	private Double[] powers = new Double[11];
 	private Double[] diameters = new Double[11];
+	private boolean isTRConstant = true;
 
 	public SteelDrawing(){
 		super();
@@ -360,6 +361,10 @@ public class SteelDrawing implements Parcelable {
 		
 		this.inletTs = inletTs;
 	}
+	
+	public double getOutletTS() {
+		return this.getOutletTS(this.getNOfDies());
+	}
 
 	public double getOutletTS(final int step) {
 		
@@ -534,6 +539,11 @@ public class SteelDrawing implements Parcelable {
 			return new SteelDrawing[size];
 		}
 	};
+
+	public void isTRConstant(boolean b) {
+		
+		isTRConstant = b; 
+	}
 
 
 

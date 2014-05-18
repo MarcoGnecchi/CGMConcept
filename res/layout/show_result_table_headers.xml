@@ -16,11 +16,12 @@
         
         <TextView
                 style="@style/headerColumn.tableHeader"
-                android:text="WIEW Omm"
+                android:text="Diameter"
                 />
              
         <TextView
                 style="@style/headerColumn.tableUOM"
+                android:text="mm"
                 />
         
                     
@@ -60,7 +61,6 @@
                 />
         
         <TextView
-                android:text = "Total"
                 style="@style/headerColumn.tableUOM"
                 />
         
@@ -81,26 +81,26 @@
              
         <TextView
                 style="@style/headerColumn.tableUOM"
-                android:text="%"
+                android:text="m/s"
                 
                 />
         
      	</LinearLayout>
        
-	    <!-- Tensile Strenght -->
+	    <!-- Tensile Strength -->
         <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
         
         <TextView
-                android:text="Tensile Strenght"
+                android:text="Tensile Strength"
                 style="@style/headerColumn.tableHeader"
                 />
              
         <TextView
                 style="@style/headerColumn.tableUOM"
-                android:text="kg/mm2"
+                android:text="N/mm2"
                 />
         
      	</LinearLayout>

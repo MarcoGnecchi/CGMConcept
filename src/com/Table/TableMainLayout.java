@@ -23,7 +23,7 @@ public class TableMainLayout extends RelativeLayout {
 	
 	// set the header titles
 	String headers[] = {
-		"Step/Value"		
+		"Step"		
 	};
 	
 	TableLayout tableA;
@@ -245,9 +245,9 @@ public class TableMainLayout extends RelativeLayout {
 				String.format( "%.2f%%", sd.getReduction(i)*100),
 				String.format( "%.2f%%", sd.getTotalReductionAtStep(i)),
 				String.format( "%.2f", sd.getSpeed(i)),
-				String.format( "%.2f", sd.getOutletTSKG(i)),
+				String.format( "%.2f", sd.getOutletTS(i)),
 				String.format( "%.2f", sd.getPull(i)),
-				String.format( "%.2f", sd.getPower(i))
+				String.format( "%.1f", sd.getPower(i))
 		};
 		
 		int layout = ((i % 2) == 0) ? R.layout.result_item_pair : R.layout.result_item_odd;
