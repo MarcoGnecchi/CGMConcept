@@ -15,7 +15,7 @@ import android.widget.LinearLayout;
 
 import com.cgmconcept.model.SteelDrawing;
 
-public class Charts extends Fragment {
+public class Charts extends Activity {
 
 	
 	SteelDrawing mSteelDrawing;
@@ -31,7 +31,7 @@ public class Charts extends Fragment {
     private XYSeriesRenderer mCurrentRenderer;
 	
 	@Override
-	protected void onCreateView(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
 		mSteelDrawing = null;
@@ -63,7 +63,7 @@ public class Charts extends Fragment {
 
 	private void addSampleData() {
 		
-			for (int i = 1; i < mSteelDrawing.getNOfDies(); i++) {
+			for (int i = 1; i <= mSteelDrawing.getNOfDies(); i++) {
 				mPowerSeries.add(i, mSteelDrawing.getPower(i));
 			}
 			
@@ -80,5 +80,13 @@ public class Charts extends Fragment {
         mRenderer.setZoomEnabled(false);
         mRenderer.setPointSize(10);
         mRenderer.setLabelsTextSize(30);
+        mRenderer.setShowGrid(true);
+        
+        if (!mSteelDrawing.isTRConstant()){
+        	
+        	mRenderer.setYAxisMax(mSteelDrawing.getAveragePower()*3);
+        	mRenderer.setYAxisMin(mSteelDrawing.getAveragePower()/3);
+        } 
+        
 	}
 }

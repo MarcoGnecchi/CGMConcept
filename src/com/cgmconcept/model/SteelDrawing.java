@@ -168,6 +168,14 @@ public class SteelDrawing implements Parcelable {
 		this.taperReduction = tapeReduction;
 	}
 	
+	public boolean isTRConstant() {
+		return isTRConstant;
+	}
+
+	public void setTRConstant(boolean isTRConstant) {
+		this.isTRConstant = isTRConstant;
+	}
+	
 	//J5
 	public double getUnknown(){
 		
@@ -517,6 +525,7 @@ public class SteelDrawing implements Parcelable {
 		dest.writeDouble(getTargetSpeed());
 		dest.writeDouble(getCarbonContent());
 		dest.writeDouble(getTaperReduction());
+		dest.writeByte((byte) (isTRConstant ? 1 : 0 ));
 	}
 
 	public static final Parcelable.Creator<SteelDrawing> CREATOR = new Parcelable.Creator<SteelDrawing>() {
@@ -530,6 +539,7 @@ public class SteelDrawing implements Parcelable {
 			sd.targetSpeed = in.readDouble();
 			sd.carbonContent = in.readDouble();
 			sd.taperReduction = in.readDouble();
+			sd.isTRConstant = in.readByte() != 0;
 			return sd;
 		}
 

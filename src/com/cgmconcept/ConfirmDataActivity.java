@@ -151,6 +151,7 @@ public class ConfirmDataActivity extends Activity {
 			super.onPostExecute(result);
 			mSteelDrawing.setTaperReduction(result);
 			progressDialog.dismiss();
+			mSteelDrawing.isTRConstant(false);
 			Intent i = new Intent(context, ShowResultsActivity.class);
 			i.putExtra(SteelDrawing.class.getName(), mSteelDrawing);
 			startActivity(i);
